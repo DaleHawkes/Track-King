@@ -15,14 +15,8 @@
         
         <label for="boat">(YYYY-MM-DD)
         <br />
-        <br />
-        Which Boat:</label>
-        <select name="boat" id="boat">
-          <option>Ultra Violet</option>
-          <option>Avrio</option>
-        </select>
-        <br />
-        <br />
+        </label>
+    <br />
 		<label for="winddirectionstart" id="winddirectionstart">Wind Direction At Start:</label>
 		<input type="text" name="winddirectionstart" id="winddirectionstart" size="30">
         

@@ -5,6 +5,8 @@ $thankYouPage = 'processed_race_information_thanks.php';
 //DB Connection
 require_once('connect.php');
 
+$boat = "Ultra Violet";
+
 //-------------------------------------------------------------------------------------------------------------------
 //SPAM CHECK STATEMENT
 
