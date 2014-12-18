@@ -70,8 +70,8 @@ require_once('connect.php');
 $sql = "SELECT Date FROM race_information WHERE Boat = 'Ultra Violet'";
 $result = mysql_query($sql)or die(mysql_error());
 
-echo "<table border='0'>";
-echo "<tr><th>Ultra Violet Racing Dates</th></tr>";
+echo "<h4>Ultra Violet Racing Dates</h4>";
+echo "<table border='0'><tr><th style='width: 200px;'>Single Race Analysis</th><th style='width: 200px;'>Single Race Polar Diagram</th></tr>"; 
  
   while($row = mysql_fetch_array($result)){
   // Before we close out of PHP, lets define all of our variables so they are easier to remember and work with,
@@ -83,8 +83,9 @@ echo "<tr><th>Ultra Violet Racing Dates</th></tr>";
  
 // Now for each looped row
 
-echo "<th style='width: 200px;'>Single Race Analysis</th><th style='width: 200px;'>Single Race Polar Diagram</th>"; 
-echo "<td><a href='analysis.php?selecteddate=$selecteddate'>".$date."</a></td><td><a href='analysis.php?selecteddate=$selecteddate'>".$date."</a></td><tr>";
+echo "<td><a href='analysis.php?selecteddate=$selecteddate'>".$date."</a></td>";
+echo "<td><a href='single_race_polar_diagram.php?selecteddate=$selecteddate'>".$date."</a></td>";
+echo "</tr>";
 
 } // End our while loop
 echo "</table>";
