@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width-device-width, initial-scale=1" />
 
-<title>Single Race Analysis</title>
+<title>Single Race Polar Diagram In Tables</title>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link href="css/style.css" rel="stylesheet">
 
@@ -53,7 +53,7 @@
         <div class="container">
  
             <h1>Single Race Polar Diagram</h1>
-            <p>Here we can look at a single race and create a polar diagram for it.</p>
+            <p>Here we can look at a single race and create a polar diagram table for it.</p>
         </div>
     </div>
 <br />
@@ -83,11 +83,13 @@ $average_wind_direction = ($race_info[3] + $race_info[4])/2;
 echo "<br>Average Wind Direction = $average_wind_direction<br><br>";
 
 ## HERE WE START OUR FOR LOOP TO CREATE THE POLAR DIAGRAM #################################################################################################################################################
-for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++) {
+for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++) 
+{
     //echo "The number is: $x <br>";
 
 		$sql = "SELECT * FROM race_recording WHERE Time LIKE '$selecteddate%' AND Bearing = '$for_loop_counter'";
 		$result = mysql_query($sql)or die(mysql_error());
+		
 	?>
 
 		<div class="table table-responsive">
@@ -106,11 +108,11 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++) {
       			</thead>
       	<tbody>
 
-<?php 
-  while($row = mysql_fetch_array($result))
-  {
-  // Before we close out of PHP, lets define all of our variables so they are easier to remember and work with,
-  // you can skip this though if you just want to directly reference each row.
+	<?php 
+  		while($row = mysql_fetch_array($result))
+  		{
+  		// Before we close out of PHP, lets define all of our variables so they are easier to remember and work with,
+  		// you can skip this though if you just want to directly reference each row.
  
   $point     = $row['Point'];
   $latitude  = $row['Latitude'];
@@ -195,6 +197,12 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++) {
   // Now for each looped row
      
 echo "<tr><td>".$point."</td><td>".$latitude."</td><td>".$longitude."</td><td>".$bearing."</td><td>".$actualspeeddecimal."</td><td>".$splittime."</td><td>".$true_bearing."</td><td>".$pointofsail."</td></tr>";
+
+## WE NEED TO USE THIS SPACE TO ADD UP OUR SPEED AND THEN DEVIDE BY THE TOTAL NUMBER OF ROWS ###################################################################################################################
+
+
+
+## #####################
  
 	} // End our while loop
 	

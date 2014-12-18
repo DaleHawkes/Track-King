@@ -3,10 +3,10 @@
 // Set the DB Access Information
 
 //ONLINE
-//Define('DB_User','paignton_posh');
-//Define('DB_Password','Regatta12');
-//Define('DB_Host','localhost');
-//Define('DB_Name','paignton_regatta');
+//Define('DB_User','db_user-username');
+//Define('DB_Password','db_user_password');
+//Define('DB_Host','db_host');
+//Define('DB_Name','db_name');
 
 //LOCALHOST
 Define('DB_User','root');
