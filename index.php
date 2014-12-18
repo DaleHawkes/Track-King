@@ -82,9 +82,10 @@ echo "<tr><th>Ultra Violet Racing Dates</th></tr>";
   $selecteddate = $date;
  
 // Now for each looped row
- 
-echo "<tr><td style='width: 200px;'><a href='analysis.php?selecteddate=$selecteddate'>".$date."</a></td></tr>";
- 
+
+echo "<th style='width: 200px;'>Single Race Analysis</th><th style='width: 200px;'>Single Race Polar Diagram</th>"; 
+echo "<td><a href='analysis.php?selecteddate=$selecteddate'>".$date."</a></td><td><a href='analysis.php?selecteddate=$selecteddate'>".$date."</a></td><tr>";
+
 } // End our while loop
 echo "</table>";
 
