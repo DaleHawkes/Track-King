@@ -82,25 +82,29 @@ echo "Comments: $race_info[9]<br>";
 $average_wind_direction = ($race_info[3] + $race_info[4])/2;
 echo "<br>Average Wind Direction = $average_wind_direction<br><br>";
 
-$sql = "SELECT * FROM race_recording WHERE Time LIKE '$selecteddate%' AND Bearings ='198'";
-$result = mysql_query($sql)or die(mysql_error());
-?>
+## HERE WE START OUR FOR LOOP TO CREATE THE POLAR DIAGRAM #################################################################################################################################################
+for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++) {
+    //echo "The number is: $x <br>";
 
-<div class="table table-responsive">
-   <table class="table table-condensed table-striped">
-      <thead>
-         <tr>
-            <th>Point</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th>Bearing</th>
-            <th>Speed (Knots)</th>
-            <th>Time</th>
-            <th>True Bearing Angle</th>
-            <th>Point of Sail</th>
-         </tr>
-      </thead>
-      <tbody>
+		$sql = "SELECT * FROM race_recording WHERE Time LIKE '$selecteddate%' AND Bearing = '$for_loop_counter'";
+		$result = mysql_query($sql)or die(mysql_error());
+	?>
+
+		<div class="table table-responsive">
+   			<table class="table table-condensed table-striped">
+      			<thead>
+         			<tr>
+            			<th>Point</th>
+            			<th>Latitude</th>
+            			<th>Longitude</th>
+            			<th>Bearing</th>
+            			<th>Speed (Knots)</th>
+            			<th>Time</th>
+            			<th>True Bearing Angle</th>
+            			<th>Point of Sail</th>
+         			</tr>
+      			</thead>
+      	<tbody>
 
 <?php 
   while($row = mysql_fetch_array($result))
@@ -193,6 +197,11 @@ $result = mysql_query($sql)or die(mysql_error());
 echo "<tr><td>".$point."</td><td>".$latitude."</td><td>".$longitude."</td><td>".$bearing."</td><td>".$actualspeeddecimal."</td><td>".$splittime."</td><td>".$true_bearing."</td><td>".$pointofsail."</td></tr>";
  
 	} // End our while loop
+	
+} 
+## THIS MARK THE END OF THE FOR LOOP THAT CREATES THE POLAR DIAGRAM TABLE #######################################################################################################################################
+
+
 ?>
 </tbody>
 </table>
