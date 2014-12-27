@@ -8,7 +8,7 @@
 <body>
 <?php
 
-ini_set('max_execution_time', 300); //300 seconds = 5 minutes
+ini_set('max_execution_time', 600); //300 seconds = 5 minutes - 600 = 10 minutes. Over 4000 GPS points on 5 minutes the import fails
 
 $db = mysql_connect("localhost", "root", "") or die("Could Not Connect.");
 
