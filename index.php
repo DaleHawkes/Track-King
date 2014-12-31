@@ -66,6 +66,8 @@ echo "</tr>";
 } // End our while loop
 echo "</table>";
 
+mysql_close($dbc);
+
 ?>
 <h3>Polar Diagrams For Multiple Races</h3> 
 

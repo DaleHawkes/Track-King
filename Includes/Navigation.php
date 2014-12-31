@@ -15,13 +15,13 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">Link One</a>
+                    <a href="#">Single Race Analysis</a>
                 </li>
                 <li>
-                    <a href="#">Link Two</a>
+                    <a href="#">Single Race Polar Diagram</a>
                 </li>
                 <li>
-                    <a href="#">Link Three</a>
+                    <a href="#">Polar Diagrams for Multiple Races</a>
                 </li>
             </ul>
         </div>
