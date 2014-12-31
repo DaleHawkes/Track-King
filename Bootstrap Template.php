@@ -12,84 +12,35 @@
 
 <body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
-<!-- THIS IS THE START OF THE NAVIGATION BAR -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
- 
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="http://127.0.0.1/my%20portable%20files/Track-King/index.php" title='Track King Home!'>Home</a>
-        </div>
- 
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="#">Link One</a>
-                </li>
-                <li>
-                    <a href="#">Link Two</a>
-                </li>
-                <li>
-                    <a href="#">Link Three</a>
-                </li>
-            </ul>
-        </div><!--/.nav-collapse -->
- 
-    </div>
-</div>
-<!-- THIS IS THE END OF THE NAVIGATION BAR -->
+<!-- Site Navigation -->
+<?php include 'Includes/Navigation.php'; ?>
 
-<div class="container"> <!-- MAIN CONTENT AREA -->
+<div class="container"> 
+<!-- START OF MAIN CONTENT AREA -->
 
 <!-- Site banner -->       	
     <div class="banner">
         <div class="container">
  
             <h1>Track King</h1>
-            <p>Ok we have 3 sections to look at, importing data, analysing a single race or looking at a Polar Diagram for a certain wind band.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </div>
 <br />
 
 <!-- ENTER OUR CONTENT HERE -->
 
-
-
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse suscipit a tellus id lacinia. In nec placerat est. Pellentesque commodo quam ornare odio maximus sodales. Quisque lacus urna, malesuada at risus eu, dictum semper nisi. Suspendisse commodo dui tortor, sit amet aliquet dolor aliquam nec. Praesent eget elit vel magna vestibulum bibendum sed ut nulla. Curabitur at venenatis nulla. Curabitur varius augue leo, sed vehicula nulla mollis a. Vestibulum volutpat auctor ipsum, interdum malesuada odio dictum in. Suspendisse sit amet risus at urna fringilla feugiat sit amet id tortor.
 
 <!-- END OF CONTENT HERE -->
 
 <br />
 <br />
 
-<!-- BACK TO TOP -->
-<a href="#" class="back-to-top">Back to Top</a>
-
-       <script>            
-			jQuery(document).ready(function() {
-				var offset = 220;
-				var duration = 500;
-				jQuery(window).scroll(function() {
-					if (jQuery(this).scrollTop() > offset) {
-						jQuery('.back-to-top').fadeIn(duration);
-					} else {
-						jQuery('.back-to-top').fadeOut(duration);
-					}
-				});
-				
-				jQuery('.back-to-top').click(function(event) {
-					event.preventDefault();
-					jQuery('html, body').animate({scrollTop: 0}, duration);
-					return false;
-				})
-			});
-		</script>
+<!-- Back To Top -->
+<?php include 'Includes/Back-To-Top.php'; ?>
 
 <br />
 <br />
@@ -97,7 +48,8 @@
 <!-- Site footer -->
 <?php include 'Includes/Footer.php'; ?>
       
-</div> <!-- END OF MAIN CONTENT AREA -->
+</div> 
+<!-- END OF MAIN CONTENT AREA -->
 
 </body>
 </html>
