@@ -5,59 +5,35 @@
 <meta name="viewport" content="width-device-width, initial-scale=1" />
 
 <title>Track King Index</title>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link href="css/style.css" rel="stylesheet">
 
 </head>
 
 <body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
-<!-- THIS IS THE START OF THE NAVIGATION BAR -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
- 
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="http://127.0.0.1/my%20portable%20files/Track-King/index.php" title='Track King Home!'>Home</a>
-        </div>
- 
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="#">Link One</a>
-                </li>
-                <li>
-                    <a href="#">Link Two</a>
-                </li>
-                <li>
-                    <a href="#">Link Three</a>
-                </li>
-            </ul>
-        </div><!--/.nav-collapse -->
- 
-    </div>
-</div>
-<!-- THIS IS THE END OF THE NAVIGATION BAR -->
+<!-- Site Navigation -->
+<?php include 'Includes/Navigation.php'; ?>
 
-<div class="container"> <!-- MAIN CONTENT AREA -->
+<div class="container"> 
+<!-- START OF MAIN CONTENT AREA -->
 
 <!-- Site banner -->       	
     <div class="banner">
         <div class="container">
  
             <h1>Track King</h1>
-            <p>Ok we have 3 sections to look at, importing data, analysing a single race or looking at a Polar Diagram for a certain wind band.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </div>
 <br />
-<h3>Import</h3>
+
+<!-- ENTER OUR CONTENT HERE -->
+
+<br />
+<h3>Import Data</h3>
 <br />
 <a href="import_race_data.php">Import Race Recording (File must be called samplefile.csv)</a>
 <p><a href="import_race_information_form.php">Import Race Information (Actual race info like wind speed, mast rake etc)</a></p>
@@ -91,56 +67,55 @@ echo "</tr>";
 echo "</table>";
 
 ?>
-<h3>Polar Diagrams</h3> 
+<h3>Polar Diagrams For Multiple Races</h3> 
 
+2 Knots
+<br />
+4 Knots
+<br />
+6 Knots
+<br />
+8 Knots
+<br />
+10 Knots
+<br />
+12 Knots
+<br />
+14 Knots
+<br />
+16 Knots
+<br />
+18 Knots
+<br />
+20 Knots
+<br />
+22 Knots
+<br />
+24 Knots
+<br />
+<br />
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta et justo sit amet mollis. Morbi congue consequat mauris, in vehicula tortor imperdiet imperdiet. Fusce vel lacinia felis. Vestibulum accumsan fringilla dui sit amet pellentesque. Fusce neque nulla, ullamcorper in accumsan in, fermentum quis nibh. Duis posuere libero eu luctus euismod. Maecenas vehicula erat eu justo sodales, vel dignissim nulla tempor. Duis in nisl hendrerit metus tristique varius vel ac risus. Praesent elementum eros quis dui molestie, fringilla rutrum sapien posuere. Mauris fringilla urna quis urna facilisis vestibulum.
+<br /><br />
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse suscipit a tellus id lacinia. In nec placerat est. Pellentesque commodo quam ornare odio maximus sodales. Quisque lacus urna, malesuada at risus eu, dictum semper nisi. Suspendisse commodo dui tortor, sit amet aliquet dolor aliquam nec. Praesent eget elit vel magna vestibulum bibendum sed ut nulla. Curabitur at venenatis nulla. Curabitur varius augue leo, sed vehicula nulla mollis a. Vestibulum volutpat auctor ipsum, interdum malesuada odio dictum in. Suspendisse sit amet risus at urna fringilla feugiat sit amet id tortor.
+<br /><br />
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse suscipit a tellus id lacinia. In nec placerat est. Pellentesque commodo quam ornare odio maximus sodales. Quisque lacus urna, malesuada at risus eu, dictum semper nisi. Suspendisse commodo dui tortor, sit amet aliquet dolor aliquam nec. Praesent eget elit vel magna vestibulum bibendum sed ut nulla. Curabitur at venenatis nulla. Curabitur varius augue leo, sed vehicula nulla mollis a. Vestibulum volutpat auctor ipsum, interdum malesuada odio dictum in. Suspendisse sit amet risus at urna fringilla feugiat sit amet id tortor.
+
+<!-- END OF CONTENT HERE -->
 
 <br />
 <br />
 
-<!-- BACK TO TOP -->
-<a href="#" class="back-to-top">Back to Top</a>
-
-       <script>            
-			jQuery(document).ready(function() {
-				var offset = 220;
-				var duration = 500;
-				jQuery(window).scroll(function() {
-					if (jQuery(this).scrollTop() > offset) {
-						jQuery('.back-to-top').fadeIn(duration);
-					} else {
-						jQuery('.back-to-top').fadeOut(duration);
-					}
-				});
-				
-				jQuery('.back-to-top').click(function(event) {
-					event.preventDefault();
-					jQuery('html, body').animate({scrollTop: 0}, duration);
-					return false;
-				})
-			});
-		</script>
+<!-- Back To Top -->
+<?php include 'Includes/Back-To-Top.php'; ?>
 
 <br />
 <br />
+
 <!-- Site footer -->
-    <div class="bottom">
-        <div class="container">
-            <div class="col-md-4">
-                <h3><span class="glyphicon glyphicon-heart"></span> Footer section 1</h3>
-                <p>Content for the first footer section.</p>
-            </div>
-            <div class="col-md-4">
-                <h3><span class="glyphicon glyphicon-star"></span> Footer section 2</h3>
-                <p>Content for the second footer section.</p>
-            </div>
-            <div class="col-md-4">
-                <h3><span class="glyphicon glyphicon-music"></span> Footer section 3</h3>
-                <p>Content for the third footer section.</p>
-            </div>
-        </div>
-    </div>
-        
-</div> <!-- END OF MAIN CONTENT AREA -->
+<?php include 'Includes/Footer.php'; ?>
+      
+</div> 
+<!-- END OF MAIN CONTENT AREA -->
 
 </body>
 </html>
