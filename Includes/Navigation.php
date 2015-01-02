@@ -18,7 +18,7 @@
                     <a href="single_race_analysis.php" title='Single Race Analysis'>Single Race Analysis</a>
                 </li>
                 <li>
-                    <a href="#">Single Race Polar Diagram</a>
+                    <a href="single_race_polar_diagram.php" title='Single Race Polar Diagram'>Single Race Polar Diagram</a>
                 </li>
                 <li>
                     <a href="#">Polar Diagrams for Multiple Races</a>

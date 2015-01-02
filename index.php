@@ -59,7 +59,7 @@ echo "<table border='0'><tr><th style='width: 200px;'>Single Race Analysis</th><
  
 // Now for each looped row
 
-echo "<td><a href='analysis.php?selecteddate=$selecteddate'>".$date."</a></td>";
+echo "<td><a href='single_race_analysis_data.php?selecteddate=$selecteddate'>".$date."</a></td>";
 echo "<td><a href='single_race_polar_diagram.php?selecteddate=$selecteddate'>".$date."</a></td>";
 echo "</tr>";
 
