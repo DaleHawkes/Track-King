@@ -24,7 +24,7 @@
     <div class="banner">
         <div class="container">
  
-            <h1>Track King</h1>
+            <h1>Single Race Analysis</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </div>

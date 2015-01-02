@@ -24,7 +24,7 @@
     <div class="banner">
         <div class="container">
  
-            <h1>Track King</h1>
+            <h1>Single Race Polar Diagram</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </div>
@@ -50,7 +50,7 @@ echo "<table border='0'><tr><th style='width: 200px;'>Single Race Polar Diagram<
  
 // Now for each looped row
 
-echo "<td><a href='single_race_polar_diagram.php?selecteddate=$selecteddate'>".$date."</a></td>";
+echo "<td><a href='single_race_polar_diagram_data.php?selecteddate=$selecteddate'>".$date."</a></td>";
 echo "</tr>";
 
 } // End our while loop
