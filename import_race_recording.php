@@ -34,6 +34,16 @@
 
 		<?php
 		
+	//-------------------------------------------------------------------------------------------------------------------
+	//PASSWORD CHECK STATEMENT
+		
+	$password_check_variable = "A19FED6";
+
+	if ($_POST[password] == $password_check_variable) 
+	{
+	//-------------------------------------------------------------------------------------------------------------------
+		
+		
 			//If we have received a submission.
 			if ($_POST['submitted'] == "yes"){
 				$goodtogo = true;
@@ -67,6 +77,7 @@
 					echo $e->getmessage ();
 				}
 				//If we have a valid submission, move it, then show it.
+								
 				if ($goodtogo){
 					try {
 						if (!move_uploaded_file ($_FILES['csvfile']['tmp_name'],"H:/EasyPHP-12.1/www/my portable files/Track-King/".$_FILES['csvfile']['name'].".csv"))
@@ -111,13 +122,15 @@
 		       				mysql_query($import) or die(mysql_error());
 							//########################################################################################
 							} // End of while loop
-					
-					//Display the new image.
-					//<img src="uploads/<?php echo $_FILES['image']['name'] . ".jpg";/>
 				}
 				?><br /><a href="import_race_recording.php">Try Again</a><?php
 			}
+	} else { // Password CHECK ELSE THEY HAVE NOT PUT RIGHT CODE IN
+	echo "Wrong Password";
+	echo "<br /><a href='import_race_recording.php'>Try Again</a>";	
+			
 			//Only show the form if there is no submission.
+					
 			if ($_POST['submitted'] != "yes"){
 				?>
 					<form action="import_race_recording.php" method="post" enctype="multipart/form-data">
@@ -127,12 +140,16 @@
                     <input name="csvfile" type="file" id="csvfile" class="btn btn-default"/>
                     <br />
                     <label for="password">Password:</label>
-    				<input type="password" class="form-control" id="password" placeholder="Enter Password">
+                    <br />
+    				<input type="password" name="password" placeholder="Enter Password">
                     <br />
 					<input type="submit" value="Submit" style="margin-top: 10px;" class="btn btn-primary">
 					</form>
 				<?php
 			}
+
+
+	} //Password Check
 		?>
 
 <!-- END OF CONTENT HERE -->
