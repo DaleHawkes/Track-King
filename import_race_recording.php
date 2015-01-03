@@ -33,6 +33,7 @@
 <!-- ENTER OUR CONTENT HERE -->
 
 		<?php
+		
 			//If we have received a submission.
 			if ($_POST['submitted'] == "yes"){
 				$goodtogo = true;
@@ -47,7 +48,7 @@
 				}
 				//Check for the file size.
 				try {
-					if ($_FILES['csvfile']['size'] > 500000){
+					if ($_FILES['csvfile']['size'] > 1000000){
 						$goodtogo = false;
 						//Echo an error message.
 						throw new exception ("Sorry, the file is too big at approx: " . intval ($_FILES['csvfile']['size'] / 1000) . "KB");
@@ -119,19 +120,17 @@
 			//Only show the form if there is no submission.
 			if ($_POST['submitted'] != "yes"){
 				?>
-               		 <form action="import_race_recording.php" method="post" enctype="multipart/form-data">
+					<form action="import_race_recording.php" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="submitted" value="yes" />
-					File Upload (.csv only, 500KB Max):<br /> <input name="csvfile" type="file" id="csvfile" /><br />
-					<input type="submit" value="Submit" style="margin-top: 10px;" />
+					<label for="csvfile">File Upload:</label>
+                    <br />
+                    <input name="csvfile" type="file" id="csvfile" class="btn btn-default"/>
+                    <br />
+                    <label for="password">Password:</label>
+    				<input type="password" class="form-control" id="password" placeholder="Enter Password">
+                    <br />
+					<input type="submit" value="Submit" style="margin-top: 10px;" class="btn btn-primary">
 					</form>
-                
-                
-                
-					<!--<form action="import_race_recording.php" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="submitted" value="yes" />
-					File Upload (.csv only, 500KB Max):<br /> <input name="csvfile" type="file" id="csvfile" /><br />
-					<input type="submit" value="Submit" style="margin-top: 10px;" />
-					</form>-->
 				<?php
 			}
 		?>
