@@ -24,7 +24,7 @@
     <div class="banner">
         <div class="container">
  
-            <h1>Track King</h1>
+            <h1>Import Race Recording</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </div>
@@ -32,7 +32,6 @@
 
 <!-- ENTER OUR CONTENT HERE -->
 
-<div style="width: 500px; text-align: left;">
 		<?php
 			//If we have received a submission.
 			if ($_POST['submitted'] == "yes"){
@@ -69,7 +68,9 @@
 				//If we have a valid submission, move it, then show it.
 				if ($goodtogo){
 					try {
-						if (!move_uploaded_file ($_FILES['csvfile']['tmp_name'],"H:/EasyPHP-12.1/www/my portable files/Track-King/Uploads/".$_FILES['csvfile']['name'].".csv")){
+						if (!move_uploaded_file ($_FILES['csvfile']['tmp_name'],"H:/EasyPHP-12.1/www/my portable files/Track-King/".$_FILES['csvfile']['name'].".csv"))
+						// Taken out /Uploads from file path
+						{
 							$goodtogo = false;
 							throw new exception ("There was an error moving the file.");
 						}
@@ -77,26 +78,63 @@
 						echo $e->getmessage ();
 					}
 				}
-				if ($goodtogo){
+				if ($goodtogo)
+				{
 					//Display the new csvfile.
-					?>File Uploaded <?php echo $_FILES['csvfile']['name']; ?>
-					<?php
+					echo "<b>File Uploaded </b>";
+                    echo $_FILES['csvfile']['name'];
+					echo "<br><br>";
+					
+					ini_set('max_execution_time', 600); //300 seconds = 5 minutes - 600 = 10 minutes. Over 4000 GPS points on 5 minutes the import fails
+
+					require_once ('connect.php');
+
+						//if (mysql_select_db("gps_tracker",$db))
+ 	
+					     $handle = fopen($_FILES['csvfile']['name'] . '.csv', "r");
+						 //$handle = fopen($_FILES['csvfile']['name'], "r", "/Uploads/")
+	 
+						     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) // $data is the array
+     						{
+							//#######################################################################################
+							echo "Point: " . $data[0] . "<br/>";
+							echo "Latitude: " . $data[1] . "<br/>";
+							echo "Longitude: " . $data[2] . "<br/>";
+							echo "Bearing: " . $data[3] . "<br/>";
+							echo "Speed: " . $data[4] . "<br/>";
+							echo "Time: " . $data[5] . "<br/>";
+							echo "<hr>";
+				
+							$import= "INSERT INTO race_recording(Point,Latitude,Longitude,Bearing,Speed,Time) VALUES ('$data[0]','$data[1]','$data[2]','$data[3]','$data[4]','$data[5]')";
+		
+		       				mysql_query($import) or die(mysql_error());
+							//########################################################################################
+							} // End of while loop
+					
+					//Display the new image.
+					//<img src="uploads/<?php echo $_FILES['image']['name'] . ".jpg";/>
 				}
 				?><br /><a href="import_race_recording.php">Try Again</a><?php
 			}
 			//Only show the form if there is no submission.
 			if ($_POST['submitted'] != "yes"){
 				?>
-<form action="import_race_recording.php" method="post" enctype="multipart/form-data">
-					<p>Example:</p>
+               		 <form action="import_race_recording.php" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="submitted" value="yes" />
 					File Upload (.csv only, 500KB Max):<br /> <input name="csvfile" type="file" id="csvfile" /><br />
 					<input type="submit" value="Submit" style="margin-top: 10px;" />
-				</form>
+					</form>
+                
+                
+                
+					<!--<form action="import_race_recording.php" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="submitted" value="yes" />
+					File Upload (.csv only, 500KB Max):<br /> <input name="csvfile" type="file" id="csvfile" /><br />
+					<input type="submit" value="Submit" style="margin-top: 10px;" />
+					</form>-->
 				<?php
 			}
 		?>
-	</div>
 
 <!-- END OF CONTENT HERE -->
 
