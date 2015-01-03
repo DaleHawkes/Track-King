@@ -57,7 +57,7 @@
 					echo $e->getmessage();
 				}
 				//Ensure that we have a valid mime type.
-				$allowedmimes = array ("text/csv");
+				$allowedmimes = array ("text/csv", "text/comma-separated-values", "application/vnd.ms-excel");
 				try {
 					if (!in_array ($_FILES['csvfile']['type'],$allowedmimes)){
 						$goodtogo = false;
@@ -79,17 +79,18 @@
 				}
 				if ($goodtogo){
 					//Display the new csvfile.
-					?>File Uploaded <!--<img src="uploads/<?php //echo $_FILES['csvfile']['name'] . ".csv"; ?>" alt="" title="" />--><?php
+					?>File Uploaded <?php echo $_FILES['csvfile']['name']; ?>
+					<?php
 				}
 				?><br /><a href="import_race_recording.php">Try Again</a><?php
 			}
 			//Only show the form if there is no submission.
 			if ($_POST['submitted'] != "yes"){
 				?>
-				<form action="import_race_recording.php" method="post" enctype="multipart/form-data">
+<form action="import_race_recording.php" method="post" enctype="multipart/form-data">
 					<p>Example:</p>
 					<input type="hidden" name="submitted" value="yes" />
-					File Upload (.csv only, 500KB Max):<br /> <input type="file" name="image" /><br />
+					File Upload (.csv only, 500KB Max):<br /> <input name="csvfile" type="file" id="csvfile" /><br />
 					<input type="submit" value="Submit" style="margin-top: 10px;" />
 				</form>
 				<?php
