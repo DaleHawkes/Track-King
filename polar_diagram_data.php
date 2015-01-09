@@ -34,11 +34,11 @@
 
 <?php
 
-$selecteddate = $_GET["selecteddate"];
+$selectedwind = $_GET["selectedwind"];
 
 require_once('connect.php');
 
-$sql_race_information = "SELECT * FROM race_information WHERE Date = '$selecteddate'";
+$sql_race_information = "SELECT * FROM race_information WHERE WindSpeedStart AND WindSpeedEnd = '$selectedwind'";
 $result_race_information = mysql_query($sql_race_information)or die(mysql_error());
 
 $race_info = mysql_fetch_array($result_race_information);
