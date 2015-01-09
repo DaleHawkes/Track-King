@@ -173,11 +173,9 @@ echo "<tr><td>".$point."</td><td>".$latitude."</td><td>".$longitude."</td><td>".
 
 ## WE NEED TO USE THIS SPACE TO ADD UP OUR SPEED AND THEN DEVIDE BY THE TOTAL NUMBER OF ROWS ###################################################################################################################
 
-//mysql_affected_rows();
-
 $averagespeed = $actualspeeddecimal / mysql_affected_rows();
 
-echo "Average Speed =".$averagespeed."<br>";
+echo "Average Speed = ".$averagespeed."<br>";
 
 ## #####################
  
