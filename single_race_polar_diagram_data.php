@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width-device-width, initial-scale=1" />
 
-<title>Track King Index</title>
+<title>Single Race Polar Diagram - Track King</title>
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link href="css/style.css" rel="stylesheet">
 
@@ -25,7 +25,7 @@
         <div class="container">
  
             <h1>Single Race Polar Diagram</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Here we order a race by bearing and can compare speeds</p>
         </div>
     </div>
 <br />
@@ -37,6 +37,8 @@
 $selecteddate = $_GET["selecteddate"];
 
 require_once('connect.php');
+
+$runningtotal = 0;
 
 $sql_race_information = "SELECT * FROM race_information WHERE Date = '$selecteddate'";
 $result_race_information = mysql_query($sql_race_information)or die(mysql_error());
@@ -53,13 +55,14 @@ echo "Wave Conditions: $race_info[8]<br>";
 echo "Comments: $race_info[9]<br>";
 
 $average_wind_direction = ($race_info[3] + $race_info[4])/2;
-echo "<br>Average Wind Direction = $average_wind_direction<br><br>";
+echo "<br>Average Wind Direction = $average_wind_direction<br>";
+echo "Remember True Bearing Angle is actually our Point of Sail<br>";
 
 ## HERE WE START OUR FOR LOOP TO CREATE THE POLAR DIAGRAM #################################################################################################################################################
 for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++) 
 {
 
-		$sql = "SELECT * FROM race_recording WHERE Time LIKE '$selecteddate%' AND Bearing = '$for_loop_counter'";
+		$sql = "SELECT * FROM race_recording WHERE Time LIKE '$selecteddate%' AND Bearing = '$for_loop_counter' ORDER BY speed ASC";
 		$result = mysql_query($sql)or die(mysql_error());
 		
 	?>
@@ -112,63 +115,10 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
   	{
 	$true_bearing = $true_bearing - 360;    
 	}
-  
-  // Lets work out what point of sail we are on.
-	switch ($true_bearing) 
-	{
-		//THIS SECTION IS ALL TO DO WITH THE PORT SIDE OF THE COURSE
-		case $true_bearing >=20 && $true_bearing <=40:
-        //print "Reach";
-		$pointofsail = "Beat";
-        break;
-		
-		case $true_bearing >=41 && $true_bearing <=80:
-        //print "Reach";
-		$pointofsail = "Close Reach";
-        break;
-		
-		case $true_bearing >=81 && $true_bearing <=110:
-        //print "Reach";
-		$pointofsail = "Reach";
-        break;
-		
-		case $true_bearing >=111 && $true_bearing <=150:
-        //print "Reach";
-		$pointofsail = "Broad Reach";
-        break;
-		
-		//THIS SECTION IS ALL TO DO WITH THE STARBOARD SIDE OF THE COURSE
-		case $true_bearing >=320 && $true_bearing <=340:
-        //print "Reach";
-		$pointofsail = "Beat";
-        break;
-		
-		case $true_bearing >=280 && $true_bearing <=319:
-        //print "Reach";
-		$pointofsail = "Close Reach";
-        break;
-		
-		case $true_bearing >=250 && $true_bearing <=279:
-        //print "Reach";
-		$pointofsail = "Reach";
-        break;
-		
-		case $true_bearing >=211 && $true_bearing <=249:
-        //print "Reach";
-		$pointofsail = "Broad Reach";
-        break;
- 
-        case $true_bearing >=151 && $true_bearing <=210:
-        //print "Run";
-		$pointofsail = "Run";		
-        break;
- 
-        default:
-        //print "Not Sure";
-		$pointofsail = "Not Sure";		
-	}
-
-  
+	
+	//Work out point of sail function
+    include 'Functions/pointofsail.php';
+  	
   // Now for each looped row
      
 echo "<tr><td>".$point."</td><td>".$latitude."</td><td>".$longitude."</td><td>".$bearing."</td><td>".$actualspeeddecimal."</td><td>".$splittime."</td><td>".$true_bearing."</td><td>".$pointofsail."</td></tr>";
@@ -177,19 +127,30 @@ echo "<tr><td>".$point."</td><td>".$latitude."</td><td>".$longitude."</td><td>".
 
 $averagespeed = $actualspeeddecimal / mysql_affected_rows();
 
-echo "Average Speed = ".$averagespeed."<br>";
+$runningtotal += $averagespeed;
 
-## #####################
+// Modify $runningtotal to two decimal places (This value will get rounded up/down)
+  	$runningtotal = number_format($runningtotal, 2, '.', '');
+
+#######################
  
 	} // End our while loop
 	
+	// We print the average speed here so that we only get one vlaue per table/bearing
+	echo "<hr>";
+  	echo "<b>Bearing is ".$bearing."</b><br>";
+	echo "Average Speed = ".$runningtotal."<br>";
+	
+	$runningtotal = 0;  // We have to zero runningtotal for the next table to be made
+	
 } 
-## THIS MARK THE END OF THE FOR LOOP THAT CREATES THE POLAR DIAGRAM TABLE #######################################################################################################################################
+## THIS MARKS THE END OF THE FOR LOOP THAT CREATES THE POLAR DIAGRAM TABLE #######################################################################################################################################
 
 
 ?>
 </tbody>
 </table>
+
 <!-- END OF CONTENT HERE -->
 
 <br />

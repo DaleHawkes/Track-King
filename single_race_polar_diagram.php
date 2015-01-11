@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width-device-width, initial-scale=1" />
 
-<title>Track King Index</title>
+<title>Single Race Polar Diagram - Track King</title>
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link href="css/style.css" rel="stylesheet">
 
@@ -25,7 +25,7 @@
         <div class="container">
  
             <h1>Single Race Polar Diagram</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Here we can look at a race by bearings and see how we did</p>
         </div>
     </div>
 <br />

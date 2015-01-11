@@ -4,6 +4,11 @@
 	switch ($true_bearing) 
 	{
 		//THIS SECTION IS ALL TO DO WITH THE PORT SIDE OF THE COURSE
+		case $true_bearing >=0 && $true_bearing <=19:
+        //print "Reach";
+		$pointofsail = "No Go Zone";
+        break;
+		
 		case $true_bearing >=20 && $true_bearing <=40:
         //print "Reach";
 		$pointofsail = "Beat";
@@ -25,6 +30,10 @@
         break;
 		
 		//THIS SECTION IS ALL TO DO WITH THE STARBOARD SIDE OF THE COURSE
+		case $true_bearing >=341 && $true_bearing <=359:
+        //print "Reach";
+		$pointofsail = "No Go Zone";
+        break;
 		case $true_bearing >=320 && $true_bearing <=340:
         //print "Reach";
 		$pointofsail = "Beat";
