@@ -58,7 +58,6 @@ echo "<br>Average Wind Direction = $average_wind_direction<br><br>";
 ## HERE WE START OUR FOR LOOP TO CREATE THE POLAR DIAGRAM #################################################################################################################################################
 for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++) 
 {
-    //echo "The number is: $x <br>";
 
 		$sql = "SELECT * FROM race_recording WHERE Time LIKE '$selecteddate%' AND Bearing = '$for_loop_counter'";
 		$result = mysql_query($sql)or die(mysql_error());
@@ -109,7 +108,10 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
   
   $true_bearing = 360 - ($average_wind_direction - $bearing);
   
-  //$true_bearing = $average_wind_direction - $bearing;
+	if ($true_bearing > 360)
+  	{
+	$true_bearing = $true_bearing - 360;    
+	}
   
   // Lets work out what point of sail we are on.
 	switch ($true_bearing) 

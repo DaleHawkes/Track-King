@@ -103,10 +103,10 @@ $result = mysql_query($sql)or die(mysql_error());
   
   $true_bearing = 360 - ($average_wind_direction - $bearing);
   
-	//if ($true_bearing > 360)
-  	//{
-	//$true_bearing = $true_bearing - 360;    
-	//}
+	if ($true_bearing > 360)
+  	{
+	$true_bearing = $true_bearing - 360;    
+	}
 		
   //Work out point of sail function
   include 'Functions/pointofsail.php';
