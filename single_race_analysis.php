@@ -25,7 +25,7 @@
         <div class="container">
  
             <h1>Single Race Analysis</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Here we can look at a Single Race and see how we did</p>
         </div>
     </div>
 <br />
