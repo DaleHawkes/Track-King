@@ -56,7 +56,7 @@ echo "Comments: $race_info[9]<br>";
 
 $average_wind_direction = ($race_info[3] + $race_info[4])/2;
 echo "<br>Average Wind Direction = $average_wind_direction<br>";
-echo "Remember True Bearing Angle is actually our Point of Sail<br>";
+echo "<b>Remember True Bearing Angle is actually our Point of Sail</b><br>";
 
 ## HERE WE START OUR FOR LOOP TO CREATE THE POLAR DIAGRAM #################################################################################################################################################
 for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++) 
