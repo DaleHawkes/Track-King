@@ -72,29 +72,29 @@ mysql_close($dbc);
 ?>
 <h3>Polar Diagrams For Multiple Races</h3> 
 
-2 Knots
+0 to 2 Knots
 <br />
-4 Knots
+2 to 4 Knots
 <br />
-6 Knots
+4 to 6 Knots
 <br />
-8 Knots
+6 to 8 Knots
 <br />
-10 Knots
+8 to 10 Knots
 <br />
-12 Knots
+10 to 12 Knots
 <br />
-14 Knots
+12 to 14 Knots
 <br />
-16 Knots
+14 to 16 Knots
 <br />
-18 Knots
+16 to 18 Knots
 <br />
-20 Knots
+18 to 20 Knots
 <br />
-22 Knots
+20 to 22 Knots
 <br />
-24 Knots
+22 to 24 Knots
 <br />
 <br />
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta et justo sit amet mollis. Morbi congue consequat mauris, in vehicula tortor imperdiet imperdiet. Fusce vel lacinia felis. Vestibulum accumsan fringilla dui sit amet pellentesque. Fusce neque nulla, ullamcorper in accumsan in, fermentum quis nibh. Duis posuere libero eu luctus euismod. Maecenas vehicula erat eu justo sodales, vel dignissim nulla tempor. Duis in nisl hendrerit metus tristique varius vel ac risus. Praesent elementum eros quis dui molestie, fringilla rutrum sapien posuere. Mauris fringilla urna quis urna facilisis vestibulum.
