@@ -36,9 +36,7 @@
 <h3>Import Data</h3>
 <br />
 <a href="import_race_recording.php">NEW Import Race Recording - File Upload Version</a><br />
-<a href="import_race_information.php">NEW Import Race Information (Actual race info like wind speed, mast rake etc)</a><br /><br />
-<a href="import_race_data.php">OLD Import Race Recording (File must be called samplefile.csv)</a><br />
-<a href="import_race_information_form.php">OLD Import Race Information</a>
+<a href="import_race_information.php">NEW Import Race Information (Actual race info like wind speed, mast rake etc)</a><br />
 <h3>Single Race Analysis</h3>
 <br />
 <?php
