@@ -131,32 +131,32 @@ if (!$errDate && !$errWindDirectionStart && !$errWindDirectionEnd && !$errWindSp
                 <?php echo $result; ?>
                 
 					<div class="form-group">
-						<label for="date" class="col-sm-2 control-label">Date</label>
-						<div class="col-sm-10">
+						<label for="date" class="col-sm-4 control-label">Date</label>
+						<div class="col-sm-8">
 							<input type="text" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" value="<?php echo htmlspecialchars(isset($_POST['date'])); ?>">
 							<?php echo "<p class='text-danger'>$errDate</p>";?>
 						</div>
 					</div>
                     
 					<div class="form-group">
-						<label for="winddirectionstart" class="col-sm-2 control-label">Wind Direction At Start</label>
-						<div class="col-sm-10">
+						<label for="winddirectionstart" class="col-sm-4 control-label">Wind Direction At Start</label>
+						<div class="col-sm-8">
 							<input type="winddirectionstart" class="form-control" id="winddirectionstart" name="winddirectionstart" placeholder="000" value="<?php echo htmlspecialchars(isset($_POST['winddirectionstart'])); ?>">
 							<?php echo "<p class='text-danger'>$errWindDirectionStart</p>";?>
 						</div>
 					</div>
                     
                     <div class="form-group">
-						<label for="winddirectionend" class="col-sm-2 control-label">Wind Direction At End</label>
-						<div class="col-sm-10">
+						<label for="winddirectionend" class="col-sm-4 control-label">Wind Direction At End</label>
+						<div class="col-sm-8">
 							<input type="winddirectionend" class="form-control" id="winddirectionend" name="winddirectionend" placeholder="000" value="<?php echo htmlspecialchars(isset($_POST['winddirectionend'])); ?>">
 							<?php echo "<p class='text-danger'>$errWindDirectionEnd</p>";?>
 						</div>
 					</div>
                     
                     <div class="form-group">
-						<label for="windspeedstart" class="col-sm-2 control-label">Wind Speed At Start</label>
-						<div class="col-sm-10">
+						<label for="windspeedstart" class="col-sm-4 control-label">Wind Speed At Start</label>
+						<div class="col-sm-8">
 							<select class="form-control" id="windspeedstart" name="windspeedstart" placeholder="0 Knots" value="<?php echo htmlspecialchars(isset($_POST['windspeedstart'])); ?>">
                             	<option>0 to 2</option>
                                 <option>2 to 4</option>
@@ -176,8 +176,8 @@ if (!$errDate && !$errWindDirectionStart && !$errWindDirectionEnd && !$errWindSp
 					</div>
                     
                     <div class="form-group">
-						<label for="windspeedend" class="col-sm-2 control-label">Wind Speed At End</label>
-						<div class="col-sm-10">
+						<label for="windspeedend" class="col-sm-4 control-label">Wind Speed At End</label>
+						<div class="col-sm-8">
 							<select class="form-control" id="windspeedend" name="windspeedend" placeholder="0 Knots" value="<?php echo htmlspecialchars(isset($_POST['windspeedend'])); ?>">
                             	<option>0 to 2</option>
                                 <option>2 to 4</option>
@@ -197,8 +197,8 @@ if (!$errDate && !$errWindDirectionStart && !$errWindDirectionEnd && !$errWindSp
 					</div>
                     
                     <div class="form-group">
-						<label for="rake" class="col-sm-2 control-label">Rake</label>
-						<div class="col-sm-10">
+						<label for="rake" class="col-sm-4 control-label">Rake</label>
+						<div class="col-sm-8">
 							<select class="form-control" id="rake" name="rake" placeholder="" value="<?php echo htmlspecialchars(isset($_POST['rake'])); ?>">
                             	<option>22 Feet 8 Inches</option>
                                 <option>22 Feet 6 Inches</option>
@@ -210,35 +210,35 @@ if (!$errDate && !$errWindDirectionStart && !$errWindDirectionEnd && !$errWindSp
 					</div>
                     
 					<div class="form-group">
-						<label for="waveconditions" class="col-sm-2 control-label">Wave Conditions</label>
-						<div class="col-sm-10">
+						<label for="waveconditions" class="col-sm-4 control-label">Wave Conditions</label>
+						<div class="col-sm-8">
 							<textarea class="form-control" rows="4" name="waveconditions"><?php echo htmlspecialchars(isset($_POST['waveconditions']));?></textarea>
 							<?php echo "<p class='text-danger'>$errWaveConditions</p>";?>
 						</div>
 					</div>
                     
                     <div class="form-group">
-						<label for="comments" class="col-sm-2 control-label">Comments</label>
-						<div class="col-sm-10">
+						<label for="comments" class="col-sm-4 control-label">Comments</label>
+						<div class="col-sm-8">
 							<textarea class="form-control" rows="4" name="comments"><?php echo htmlspecialchars(isset($_POST['comments']));?></textarea>
 							<?php echo "<p class='text-danger'>$errComments</p>";?>
 						</div>
 					</div>
                     
 					<div class="form-group">
-						<label for="human" class="col-sm-2 control-label">2 + 3 = ?</label>
-						<div class="col-sm-10">
+						<label for="human" class="col-sm-4 control-label">2 + 3 = ?</label>
+						<div class="col-sm-8">
 							<input type="text" class="form-control" id="human" name="human" placeholder="Your Answer">
 							<?php echo "<p class='text-danger'>$errHuman</p>";?>
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-10 col-sm-offset-2">
+						<div class="col-sm-8 col-sm-offset-4">
 							<input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-10 col-sm-offset-2">
+						<div class="col-sm-8 col-sm-offset-2">
 							<?php echo $result; ?>	
 						</div>
 					</div>
