@@ -34,18 +34,8 @@
 
 		<?php
 		
-	//-------------------------------------------------------------------------------------------------------------------
-	//PASSWORD CHECK STATEMENT
-		
-	$password_check_variable = "A19FED6";
-
-	if ($_POST[password] == $password_check_variable) 
-	{
-	//-------------------------------------------------------------------------------------------------------------------
-		
-		
 			//If we have received a submission.
-			if ($_POST['submitted'] == "yes"){
+			if ($_POST['submit'] == "yes"){
 				$goodtogo = true;
 				//Check for a blank submission.
 				try {
@@ -123,33 +113,52 @@
 							//########################################################################################
 							} // End of while loop
 				}
-				?><br /><a href="import_race_recording.php">Try Again</a><?php
 			}
-	} else { // Password CHECK ELSE THEY HAVE NOT PUT RIGHT CODE IN
-	echo "Wrong Password";
-	echo "<br /><a href='import_race_recording.php'>Try Again</a>";	
-			
+	
 			//Only show the form if there is no submission.
 					
 			if ($_POST['submitted'] != "yes"){
 				?>
-					<form action="import_race_recording.php" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="submitted" value="yes" />
-					<label for="csvfile">File Upload:</label>
-                    <br />
-                    <input name="csvfile" type="file" id="csvfile" class="btn btn-default"/>
-                    <br />
-                    <label for="password">Password:</label>
-                    <br />
-    				<input type="password" name="password" placeholder="Enter Password">
-                    <br />
-					<input type="submit" value="Submit" style="margin-top: 10px;" class="btn btn-primary">
-					</form>
+                	<div class="container">
+  		<div class="row">
+  			<div class="col-md-6 col-md-offset-3">
+  				<h1 class="page-header text-center">Submit Your GPS Race Data</h1>
+				<form class="form-horizontal" role="form" method="post" action="import_race_recording.php">
+                
+                <?php echo $result; ?>
+                
+					<div class="form-group">
+						<label for="date" class="col-sm-4 control-label">File</label>
+						<div class="col-sm-8">
+                        	<input type="file" class="form-control" id="csvfile" name="csvfile"/>
+						</div>
+					</div>
+                    
+					<div class="form-group">
+						<label for="human" class="col-sm-4 control-label">2 + 3 = ?</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="human" name="human" placeholder="Your Answer">
+							<?php echo "<p class='text-danger'>$errHuman</p>";?>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-8 col-sm-offset-4">
+							<input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-8 col-sm-offset-2">
+							<?php echo $result; ?>	
+						</div>
+					</div>
+				</form> 
+			</div>
+		</div>
+	</div> 
+
 				<?php
 			}
 
-
-	} //Password Check
 		?>
 
 <!-- END OF CONTENT HERE -->
