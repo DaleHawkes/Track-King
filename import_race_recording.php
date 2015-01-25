@@ -34,6 +34,13 @@
 
 		<?php
 		
+		$human = intval($_POST['human']);
+		
+			//Check if simple anti-bot test is correct
+			if ($human !== 5) {
+				$errHuman = 'Your anti-spam is incorrect';
+			}
+		
 			//If we have received a submission.
 			if ($_POST['submit'] == "yes"){
 				$goodtogo = true;
