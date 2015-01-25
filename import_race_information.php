@@ -16,7 +16,8 @@ $errHuman ="";
 
 $result ="";
 
-	if ($_POST["submit"]) {
+	if ($_POST["submit"]) 
+	{
 		$date = $_POST['date'];
 		$winddirectionstart = $_POST['winddirectionstart'];
 		$winddirectionend = $_POST['winddirectionend'];
@@ -71,20 +72,20 @@ $result ="";
 			$errHuman = 'Your anti-spam is incorrect';
 		}
 
-// If there are no errors, submit the data
-if (!$errDate && !$errWindDirectionStart && !$errWindDirectionEnd && !$errWindSpeedStart && !$errWindSpeedEnd && !$errRake && !$errWaveConditions && !$errComments && !$errHuman) 
-{
-	$Insert_entry = "INSERT INTO race_information VALUES('','$date','$boat','$winddirectionstart','$winddirectionend','$windspeedstart','$windspeedend','$rake','$waveconditions','$comments')";
+			// If there are no errors, submit the data
+			if (!$errDate && !$errWindDirectionStart && !$errWindDirectionEnd && !$errWindSpeedStart && !$errWindSpeedEnd && !$errRake && !$errWaveConditions && !$errComments && !$errHuman) 
+			{
+			$Insert_entry = "INSERT INTO race_information VALUES('','$date','$boat','$winddirectionstart','$winddirectionend','$windspeedstart','$windspeedend','$rake','$waveconditions','$comments')";
 	
-	if (mysql_query ($Insert_entry))		
-	{
-		$result='<div class="alert alert-success">All data has been inputted!</div>';
-	} 
-	else 
-	{
-		$result='<div class="alert alert-danger">Sorry there was an error. Please try again.</div>';
-	}
-}
+				if (mysql_query ($Insert_entry))		
+				{
+					$result='<div class="alert alert-success">All data has been inputted!</div>';
+				} 
+				else 
+				{
+					$result='<div class="alert alert-danger">Sorry there was an error. Please try again.</div>';
+				}
+		}
 	}
 ?>
 

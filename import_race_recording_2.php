@@ -2,89 +2,109 @@
 
 require_once('connect.php');
 
-$boat = "Ultra Violet";
-
-$errDate ="";
-$errWindDirectionStart ="";
-$errWindDirectionEnd ="";
-$errWindSpeedStart ="";
-$errWindSpeedEnd ="";
-$errRake ="";
-$errWaveConditions ="";
-$errComments ="";
 $errHuman ="";
 
 $result ="";
 
-	if ($_POST["submit"]) {
-		$date = $_POST['date'];
-		$winddirectionstart = $_POST['winddirectionstart'];
-		$winddirectionend = $_POST['winddirectionend'];
-		$windspeedstart = $_POST['windspeedstart'];
-		$windspeedend = $_POST['windspeedend'];
-		$rake = $_POST['rake'];
-		$waveconditions = $_POST['waveconditions'];
-		$comments = $_POST['comments'];
-		$human = intval($_POST['human']);
+	if ($_POST["submit"]) 
+	{
+		
+		//$human = intval($_POST['human']);
 	
-		// Check if name has been entered
-		if (!$_POST['date']) {
-			$errDate = 'Please enter the date';
-		}
-		
-		// Check if wind direction start has been entered
-		if (!$_POST['winddirectionstart']) {
-			$errWindDirectionStart = 'Please enter the wind direction at the start of the race';
-		}
-		
-		// Check if wind direction end has been entered
-		if (!$_POST['winddirectionend']) {
-			$errWindDirectionEnd = 'Please enter the wind direction at the end of the race';
-		}
-		
-		// Check if wind speed start has been entered
-		if (!$_POST['windspeedstart']) {
-			$errWindSpeedStart = 'Please enter the wind speed at the start of the race';
-		}
-		
-		// Check if wind speed end has been entered
-		if (!$_POST['windspeedend']) {
-			$errWindSpeedEnd = 'Please enter the wind speed at the end of the race';
-		}
-		
-		// Check if rake has been entered
-		if (!$_POST['rake']) {
-			$errRake = 'Please enter the mast rake';
-		}
-		
-		// Check if wave conditions has been entered
-		if (!$_POST['waveconditions']) {
-			$errWaveConditions = 'Please enter the wave conditions';
-		}
-		
-		//Check if comments have been entered
-		if (!$_POST['comments']) {
-			$errComments = 'Please enter some comments';
-		}
 		//Check if simple anti-bot test is correct
-		if ($human !== 5) {
-			$errHuman = 'Your anti-spam is incorrect';
-		}
+		//if ($human !== 5) {
+		//	$errHuman = 'Your anti-spam is incorrect';
+		//}
 
 // If there are no errors, submit the data
-if (!$errDate && !$errWindDirectionStart && !$errWindDirectionEnd && !$errWindSpeedStart && !$errWindSpeedEnd && !$errRake && !$errWaveConditions && !$errComments && !$errHuman) 
-{
-	$Insert_entry = "INSERT INTO race_information VALUES('','$date','$boat','$winddirectionstart','$winddirectionend','$windspeedstart','$windspeedend','$rake','$waveconditions','$comments')";
+//if (!$errHuman) 
+//{
+	//If we have received a submission.
+				$goodtogo = true;
+				//Check for a blank submission.
+				try {
+					if ($_FILES['csvfile']['size'] == 0){
+						$goodtogo = false;
+						throw new exception ("Sorry, you must upload an CSV file.");
+					}
+				} catch (exception $e) {
+					echo $e->getmessage();
+				}
+				//Check for the file size.
+				try {
+					if ($_FILES['csvfile']['size'] > 1000000){
+						$goodtogo = false;
+						//Echo an error message.
+						throw new exception ("Sorry, the file is too big at approx: " . intval ($_FILES['csvfile']['size'] / 1000) . "KB");
+					}
+				} catch (exception $e) {
+					echo $e->getmessage();
+				}
+				//Ensure that we have a valid mime type.
+				$allowedmimes = array ("text/csv", "text/comma-separated-values", "application/vnd.ms-excel");
+				try {
+					if (!in_array ($_FILES['csvfile']['type'],$allowedmimes)){
+						$goodtogo = false;
+						throw new exception ("Sorry, the file must be of type .csv.  Yours is: " . $_FILES['csvfile']['type'] . "");
+					}
+				} catch (exception $e) {
+					echo $e->getmessage ();
+				}
+				//If we have a valid submission, move it, then show it.
+								
+				if ($goodtogo){
+					try {
+						if (!move_uploaded_file ($_FILES['csvfile']['tmp_name'],"H:/EasyPHP-12.1/www/my portable files/Track-King/".$_FILES['csvfile']['name'].".csv"))
+						// Taken out /Uploads from file path
+						{
+							$goodtogo = false;
+							throw new exception ("There was an error moving the file.");
+						}
+					} catch (exception $e) {
+						echo $e->getmessage ();
+					}
+				}
+				if ($goodtogo)
+				{
+					//Display the new csvfile.
+					echo "<b>File Uploaded </b>";
+                    echo $_FILES['csvfile']['name'];
+					echo "<br><br>";
+					
+					ini_set('max_execution_time', 600); //300 seconds = 5 minutes - 600 = 10 minutes. Over 4000 GPS points on 5 minutes the import fails
+
+					require_once ('connect.php');
+
+						//if (mysql_select_db("gps_tracker",$db))
+ 	
+					     $handle = fopen($_FILES['csvfile']['name'] . '.csv', "r");
+	 
+						     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) // $data is the array
+     						{
+							//#######################################################################################
+							echo "Point: " . $data[0] . "<br/>";
+							echo "Latitude: " . $data[1] . "<br/>";
+							echo "Longitude: " . $data[2] . "<br/>";
+							echo "Bearing: " . $data[3] . "<br/>";
+							echo "Speed: " . $data[4] . "<br/>";
+							echo "Time: " . $data[5] . "<br/>";
+							echo "<hr>";
+				
+							$import= "INSERT INTO race_recording(Point,Latitude,Longitude,Bearing,Speed,Time) VALUES ('$data[0]','$data[1]','$data[2]','$data[3]','$data[4]','$data[5]')";
+		
+		       				mysql_query($import) or die(mysql_error());
+							//########################################################################################
+							} // End of while loop
+						}
+					}
 	
-	if (mysql_query ($Insert_entry))		
-	{
-		$result='<div class="alert alert-success">All data has been inputted!</div>';
-	} 
-	else 
-	{
-		$result='<div class="alert alert-danger">Sorry there was an error. Please try again.</div>';
-	}
-}
+					if (mysql_query ($import))		
+					{
+						$result='<div class="alert alert-success">All data has been inputted!</div>';
+					} 
+					else 
+					{
+						$result='<div class="alert alert-danger">Sorry there was an error. Please try again.</div>';
 	}
 ?>
 
@@ -126,105 +146,17 @@ if (!$errDate && !$errWindDirectionStart && !$errWindDirectionEnd && !$errWindSp
   		<div class="row">
   			<div class="col-md-6 col-md-offset-3">
   				<h1 class="page-header text-center">Submit Your Race Data</h1>
-				<form class="form-horizontal" role="form" method="post" action="import_race_information.php">
+				<form class="form-horizontal" role="form" method="post" action="import_race_recording_2.php">
                 
                 <?php echo $result; ?>
                 
-					<div class="form-group">
-						<label for="date" class="col-sm-4 control-label">Date</label>
+                	<div class="form-group">
+						<label for="csvfile" class="col-sm-4 control-label">File</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" value="<?php echo htmlspecialchars(isset($_POST['date'])); ?>">
-							<?php echo "<p class='text-danger'>$errDate</p>";?>
+                        	<input type="file" class="form-control" id="csvfile" name="csvfile"/>
 						</div>
 					</div>
-                    
-					<div class="form-group">
-						<label for="winddirectionstart" class="col-sm-4 control-label">Wind Direction At Start</label>
-						<div class="col-sm-8">
-							<input type="winddirectionstart" class="form-control" id="winddirectionstart" name="winddirectionstart" placeholder="000" value="<?php echo htmlspecialchars(isset($_POST['winddirectionstart'])); ?>">
-							<?php echo "<p class='text-danger'>$errWindDirectionStart</p>";?>
-						</div>
-					</div>
-                    
-                    <div class="form-group">
-						<label for="winddirectionend" class="col-sm-4 control-label">Wind Direction At End</label>
-						<div class="col-sm-8">
-							<input type="winddirectionend" class="form-control" id="winddirectionend" name="winddirectionend" placeholder="000" value="<?php echo htmlspecialchars(isset($_POST['winddirectionend'])); ?>">
-							<?php echo "<p class='text-danger'>$errWindDirectionEnd</p>";?>
-						</div>
-					</div>
-                    
-                    <div class="form-group">
-						<label for="windspeedstart" class="col-sm-4 control-label">Wind Speed At Start</label>
-						<div class="col-sm-8">
-							<select class="form-control" id="windspeedstart" name="windspeedstart" placeholder="0 Knots" value="<?php echo htmlspecialchars(isset($_POST['windspeedstart'])); ?>">
-                            	<option>0 to 2</option>
-                                <option>2 to 4</option>
-                                <option>4 to 6</option>
-                                <option>6 to 8</option>
-                                <option>8 to 10</option>
-                                <option>10 to 12</option>
-                                <option>12 to 14</option>
-                                <option>14 to 16</option>
-                                <option>16 to 18</option>
-                                <option>18 to 20</option>
-                                <option>20 to 22</option>
-                                <option>22 to 24</option>
-                            </select>
-							<?php echo "<p class='text-danger'>$errWindSpeedStart</p>";?>
-						</div>
-					</div>
-                    
-                    <div class="form-group">
-						<label for="windspeedend" class="col-sm-4 control-label">Wind Speed At End</label>
-						<div class="col-sm-8">
-							<select class="form-control" id="windspeedend" name="windspeedend" placeholder="0 Knots" value="<?php echo htmlspecialchars(isset($_POST['windspeedend'])); ?>">
-                            	<option>0 to 2</option>
-                                <option>2 to 4</option>
-                                <option>4 to 6</option>
-                                <option>6 to 8</option>
-                                <option>8 to 10</option>
-                                <option>10 to 12</option>
-                                <option>12 to 14</option>
-                                <option>14 to 16</option>
-                                <option>16 to 18</option>
-                                <option>18 to 20</option>
-                                <option>20 to 22</option>
-                                <option>22 to 24</option>
-                            </select>
-							<?php echo "<p class='text-danger'>$errWindDirectionEnd</p>";?>
-						</div>
-					</div>
-                    
-                    <div class="form-group">
-						<label for="rake" class="col-sm-4 control-label">Rake</label>
-						<div class="col-sm-8">
-							<select class="form-control" id="rake" name="rake" placeholder="" value="<?php echo htmlspecialchars(isset($_POST['rake'])); ?>">
-                            	<option>22 Feet 8 Inches</option>
-                                <option>22 Feet 6 Inches</option>
-                                <option>22 Feet 4 Inches</option>
-                                <option>22 Feet 2 Inches</option>
-                            </select>
-							<?php echo "<p class='text-danger'>$errRake</p>";?>
-						</div>
-					</div>
-                    
-					<div class="form-group">
-						<label for="waveconditions" class="col-sm-4 control-label">Wave Conditions</label>
-						<div class="col-sm-8">
-							<textarea class="form-control" rows="4" name="waveconditions"><?php echo htmlspecialchars(isset($_POST['waveconditions']));?></textarea>
-							<?php echo "<p class='text-danger'>$errWaveConditions</p>";?>
-						</div>
-					</div>
-                    
-                    <div class="form-group">
-						<label for="comments" class="col-sm-4 control-label">Comments</label>
-						<div class="col-sm-8">
-							<textarea class="form-control" rows="4" name="comments"><?php echo htmlspecialchars(isset($_POST['comments']));?></textarea>
-							<?php echo "<p class='text-danger'>$errComments</p>";?>
-						</div>
-					</div>
-                    
+ 
 					<div class="form-group">
 						<label for="human" class="col-sm-4 control-label">2 + 3 = ?</label>
 						<div class="col-sm-8">
@@ -238,8 +170,7 @@ if (!$errDate && !$errWindDirectionStart && !$errWindDirectionEnd && !$errWindSp
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-8 col-sm-offset-2">
-							<?php echo $result; ?>	
+						<div class="col-sm-8 col-sm-offset-2">	
 						</div>
 					</div>
 				</form> 
