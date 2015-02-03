@@ -6,7 +6,9 @@ $errHuman ="";
 
 $result ="";
 
-	if ($_POST["submit"]) 
+$csvfile;
+
+	if ($_POST["submit"])
 	{
 		
 		//$human = intval($_POST['human']);
@@ -19,11 +21,13 @@ $result ="";
 // If there are no errors, submit the data
 //if (!$errHuman) 
 //{
+
 	//If we have received a submission.
 				$goodtogo = true;
 				//Check for a blank submission.
 				try {
-					if ($_FILES['csvfile']['size'] == 0){
+					if ($_FILES['csvfile']['size'] == 0)
+                    {
 						$goodtogo = false;
 						throw new exception ("Sorry, you must upload an CSV file.");
 					}
@@ -32,18 +36,20 @@ $result ="";
 				}
 				//Check for the file size.
 				try {
-					if ($_FILES['csvfile']['size'] > 1000000){
+					if ($_FILES['csvfile']['size'] > 1000000)
+                    {
 						$goodtogo = false;
 						//Echo an error message.
 						throw new exception ("Sorry, the file is too big at approx: " . intval ($_FILES['csvfile']['size'] / 1000) . "KB");
 					}
-				} catch (exception $e) {
+				} catch (exception $e){
 					echo $e->getmessage();
 				}
 				//Ensure that we have a valid mime type.
 				$allowedmimes = array ("text/csv", "text/comma-separated-values", "application/vnd.ms-excel");
 				try {
-					if (!in_array ($_FILES['csvfile']['type'],$allowedmimes)){
+					if (!in_array ($_FILES['csvfile']['type'],$allowedmimes))
+                    {
 						$goodtogo = false;
 						throw new exception ("Sorry, the file must be of type .csv.  Yours is: " . $_FILES['csvfile']['type'] . "");
 					}
@@ -52,7 +58,8 @@ $result ="";
 				}
 				//If we have a valid submission, move it, then show it.
 								
-				if ($goodtogo){
+				if ($goodtogo)
+                {
 					try {
 						if (!move_uploaded_file ($_FILES['csvfile']['tmp_name'],"H:/EasyPHP-12.1/www/my portable files/Track-King/".$_FILES['csvfile']['name'].".csv"))
 						// Taken out /Uploads from file path
@@ -72,8 +79,6 @@ $result ="";
 					echo "<br><br>";
 					
 					ini_set('max_execution_time', 600); //300 seconds = 5 minutes - 600 = 10 minutes. Over 4000 GPS points on 5 minutes the import fails
-
-					require_once ('connect.php');
 
 						//if (mysql_select_db("gps_tracker",$db))
  	
