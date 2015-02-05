@@ -30,35 +30,20 @@
     </div>
 <br />
 
-<?php
-
-require_once('connect.php');
-
-$sql = "SELECT Date FROM race_information WHERE Boat = 'Ultra Violet'";
-$result = mysql_query($sql)or die(mysql_error());
-
-echo "<h4>Ultra Violet Racing Dates</h4>";
-echo "<table border='0'><tr><th style='width: 200px;'>Single Race Polar Diagram</th></tr>"; 
- 
-  while($row = mysql_fetch_array($result)){
-  // Before we close out of PHP, lets define all of our variables so they are easier to remember and work with,
-  // you can skip this though if you just want to directly reference each row.
- 
-  $date = $row['Date'];
-  
-  $selecteddate = $date;
- 
-// Now for each looped row
-
-echo "<td><a href='single_race_polar_diagram_data.php?selectedwind=$selectedwind'>".$wind."</a></td>";
-echo "</tr>";
-
-} // End our while loop
-echo "</table>";
-
-mysql_close($dbc);
-
-?>
+<strong>Ploar Diagram for Multiple Races</strong><br />
+<a href='polar_diagram_data.php?windspeed=$windspeed'>0 to 2 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=$windspeed'>2 to 4 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=$windspeed'>4 to 6 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=$windspeed'>6 to 8 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=$windspeed'>8 to 10 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=$windspeed'>10 to 12 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=$windspeed'>12 to 14 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=$windspeed'>14 to 16 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=$windspeed'>16 to 18 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=$windspeed'>18 to 20 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=$windspeed'>20 to 22 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=$windspeed'>22 to 24 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=$windspeed'>24 to 26 knots</a><br />
 
 <br />
 <br />
