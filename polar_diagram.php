@@ -20,7 +20,7 @@
 <div class="container"> 
 <!-- START OF MAIN CONTENT AREA -->
 
-<!-- Site banner -->       	
+<!-- Site banner -->
     <div class="banner">
         <div class="container">
  
@@ -31,19 +31,19 @@
 <br />
 
 <strong>Ploar Diagram for Multiple Races</strong><br />
-<a href='polar_diagram_data.php?windspeed=$windspeed'>0 to 2 knots</a><br />
-<a href='polar_diagram_data.php?windspeed=$windspeed'>2 to 4 knots</a><br />
-<a href='polar_diagram_data.php?windspeed=$windspeed'>4 to 6 knots</a><br />
-<a href='polar_diagram_data.php?windspeed=$windspeed'>6 to 8 knots</a><br />
-<a href='polar_diagram_data.php?windspeed=$windspeed'>8 to 10 knots</a><br />
-<a href='polar_diagram_data.php?windspeed=$windspeed'>10 to 12 knots</a><br />
-<a href='polar_diagram_data.php?windspeed=$windspeed'>12 to 14 knots</a><br />
-<a href='polar_diagram_data.php?windspeed=$windspeed'>14 to 16 knots</a><br />
-<a href='polar_diagram_data.php?windspeed=$windspeed'>16 to 18 knots</a><br />
-<a href='polar_diagram_data.php?windspeed=$windspeed'>18 to 20 knots</a><br />
-<a href='polar_diagram_data.php?windspeed=$windspeed'>20 to 22 knots</a><br />
-<a href='polar_diagram_data.php?windspeed=$windspeed'>22 to 24 knots</a><br />
-<a href='polar_diagram_data.php?windspeed=$windspeed'>24 to 26 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=0 to 2'>0 to 2 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=2 to 4'>2 to 4 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=4 to 6'>4 to 6 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=6 to 8'>6 to 8 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=8 to 10'>8 to 10 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=10 to 12'>10 to 12 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=12 to 14'>12 to 14 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=14 to 16'>14 to 16 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=16 to 18'>16 to 18 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=18 to 20'>18 to 20 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=20 to 22'>20 to 22 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=22 to 24'>22 to 24 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=24 to 26'>24 to 26 knots</a><br />
 
 <br />
 <br />
