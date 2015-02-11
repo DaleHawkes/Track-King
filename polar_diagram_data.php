@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width-device-width, initial-scale=1" />
 
-<title>Track King Index</title>
+<title>Polar Diagram - Track King Index</title>
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link href="css/style.css" rel="stylesheet">
 
@@ -60,11 +60,10 @@ echo "<br>Average Wind Direction = $average_wind_direction<br><br>";
 ## HERE WE START OUR FOR LOOP TO CREATE THE POLAR DIAGRAM #################################################################################################################################################
 for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++) 
 {
-    //echo "The number is: $x <br>";
 
-		$sql = "SELECT * FROM race_recording WHERE Time LIKE '$selecteddate%' AND Bearing = '$for_loop_counter'";
+		$sql = "SELECT * FROM race_recording WHERE Time LIKE '%2014-11-23%' AND Bearing = '$for_loop_counter'";
 		$result = mysql_query($sql)or die(mysql_error());
-		
+
 	?>
 
 		<div class="table table-responsive">
