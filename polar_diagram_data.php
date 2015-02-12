@@ -17,7 +17,7 @@
 <!-- Site Navigation -->
 <?php include 'Includes/Navigation.php'; ?>
 
-<div class="container"> 
+<div class="container">
 <!-- START OF MAIN CONTENT AREA -->
 
 <!-- Site banner -->       	
@@ -45,23 +45,24 @@ $result_race_information = mysql_query($sql_race_information)or die(mysql_error(
 
 $race_info = mysql_fetch_array($result_race_information);
 
-echo "Date: $race_info[1]<br>";
-echo "Wind Direction at Start: $race_info[3]<br>";
-echo "Wind Direction at End: $race_info[4]<br>";
-echo "Wind Speed at Start: $race_info[5] knots<br>";
-echo "Wind Speed at End: $race_info[6] knots<br>";
-echo "Mast Rake: $race_info[7]<br>";
-echo "Wave Conditions: $race_info[8]<br>";
-echo "Comments: $race_info[9]<br>";
+//echo "Date: $race_info[1]<br>";
+//echo "Wind Direction at Start: $race_info[3]<br>";
+//echo "Wind Direction at End: $race_info[4]<br>";
+//echo "Wind Speed at Start: $race_info[5] knots<br>";
+//echo "Wind Speed at End: $race_info[6] knots<br>";
+//echo "Mast Rake: $race_info[7]<br>";
+//echo "Wave Conditions: $race_info[8]<br>";
+//echo "Comments: $race_info[9]<br>";
 
 $average_wind_direction = ($race_info[3] + $race_info[4])/2;
-echo "<br>Average Wind Direction = $average_wind_direction<br><br>";
+//echo "<br>Average Wind Direction = $average_wind_direction<br><br>";
 
 ## HERE WE START OUR FOR LOOP TO CREATE THE POLAR DIAGRAM #################################################################################################################################################
-for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++) 
+for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
 {
 
-		$sql = "SELECT * FROM race_recording WHERE Time LIKE '%2014-11-23%' AND Bearing = '$for_loop_counter'";
+		$sql = "SELECT * FROM race_recording, race_information WHERE WindSpeedStart = '8 to 10' AND WindSpeedEnd = '8 to 10' AND Bearing = '$for_loop_counter'";
+        //$sql = "SELECT * FROM race_recording WHERE Time LIKE '%2014-11-23%' AND Bearing = '$for_loop_counter'";
 		$result = mysql_query($sql)or die(mysql_error());
 
 	?>
@@ -73,8 +74,11 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
             			<th>Point</th>
             			<th>Latitude</th>
             			<th>Longitude</th>
+                        <th>WindSpeedStart</th>
+            			<th>WindSpeedEnd</th>
             			<th>Bearing</th>
             			<th>Speed (Knots)</th>
+                        <th>Date</th>
             			<th>Time</th>
             			<th>True Bearing Angle</th>
             			<th>Point of Sail</th>
@@ -94,6 +98,8 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
   $bearing   = $row['Bearing'];
   $speed     = $row['Speed'];
   $time      = $row['Time'];
+  $WindSpeedStart     = $row['WindSpeedStart'];
+  $WindSpeedEnd      = $row['WindSpeedEnd'];
   
   $actualspeed = $speed * 1.94384449; //Lets work out our speed in knots
  
@@ -170,7 +176,7 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
   
   // Now for each looped row
      
-echo "<tr><td>".$point."</td><td>".$latitude."</td><td>".$longitude."</td><td>".$bearing."</td><td>".$actualspeeddecimal."</td><td>".$splittime."</td><td>".$true_bearing."</td><td>".$pointofsail."</td></tr>";
+echo "<tr><td>".$point."</td><td>".$latitude."</td><td>".$longitude."</td><td>".$WindSpeedStart."</td><td>".$WindSpeedEnd."</td><td>".$bearing."</td><td>".$actualspeeddecimal."</td><td>".$splitdate."</td><td>".$splittime."</td><td>".$true_bearing."</td><td>".$pointofsail."</td></tr>";
 
 ## WE NEED TO USE THIS SPACE TO ADD UP OUR SPEED AND THEN DEVIDE BY THE TOTAL NUMBER OF ROWS ###################################################################################################################
 
