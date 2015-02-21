@@ -61,7 +61,8 @@ $average_wind_direction = ($race_info[3] + $race_info[4])/2;
 for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
 {
 
-		$sql = "SELECT * FROM race_recording, race_information WHERE WindSpeedStart = '8 to 10' AND WindSpeedEnd = '8 to 10' AND Bearing = '$for_loop_counter'";
+		//$sql = "SELECT * FROM race_recording, race_information WHERE WindSpeedStart = '8 to 10' AND WindSpeedEnd = '8 to 10' AND Bearing = '$for_loop_counter'";
+        $sql = "SELECT race_information.*, race_recording.* FROM race_information LEFT JOIN race_recording ON race_information.date LIKE race_recording.time WHERE WindSpeedStart = '8 to 10' AND WindSpeedEnd = '8 to 10' AND Bearing = '$for_loop_counter'";
         //$sql = "SELECT * FROM race_recording WHERE Time LIKE '%2014-11-23%' AND Bearing = '$for_loop_counter'";
 		$result = mysql_query($sql)or die(mysql_error());
 
@@ -170,7 +171,7 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
  
         default:
         //print "Not Sure";
-		$pointofsail = "Not Sure";		
+		$pointofsail = "Not Sure";
 	}
 
   
@@ -185,6 +186,8 @@ echo "<tr><td>".$point."</td><td>".$latitude."</td><td>".$longitude."</td><td>".
 ## #####################
  
 	} // End our while loop
+
+    echo "<b>Bearing is ".$bearing."</b><br>";
 	
 } 
 ## THIS MARK THE END OF THE FOR LOOP THAT CREATES THE POLAR DIAGRAM TABLE #######################################################################################################################################
