@@ -93,11 +93,11 @@ $result = mysql_query($sql)or die(mysql_error());
   // Modify ActualSpeed to two decimal places
   $actualspeeddecimal = number_format($actualspeed, 2, '.', '');
   
-  $date_time = $time;
-  list($splitdate, $splittime) = explode('T', $date_time); //We split the first part of the string with the letter T
-  
+  //$date_time = $time;
+  //list($splitdate, $splittime) = explode('T', $date_time); //We split the first part of the string with the letter T
+
   // Using ASCII 46 we can remove the full stops from the time variable
-  $splittime = str_replace(chr(46), '', $splittime);
+  //$splittime = str_replace(chr(46), '', $splittime);
   
   // Lets now work out the actual bearing. What point of sail are we on?
   
@@ -113,7 +113,7 @@ $result = mysql_query($sql)or die(mysql_error());
   
   // Now for each looped row
      
-echo "<tr><td>".$point."</td><td>".$latitude."</td><td>".$longitude."</td><td>".$bearing."</td><td>".$actualspeeddecimal."</td><td>".$splittime."</td><td>".$true_bearing."</td><td>".$pointofsail."</td></tr>";
+echo "<tr><td>".$point."</td><td>".$latitude."</td><td>".$longitude."</td><td>".$bearing."</td><td>".$actualspeeddecimal."</td><td>".$time."</td><td>".$true_bearing."</td><td>".$pointofsail."</td></tr>";
  
 	} // End our while loop
 ?>

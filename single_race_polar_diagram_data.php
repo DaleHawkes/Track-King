@@ -101,11 +101,11 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
   // Modify ActualSpeed to two decimal places
   $actualspeeddecimal = number_format($actualspeed, 2, '.', '');
   
-  $date_time = $time;
-  list($splitdate, $splittime) = explode('T', $date_time); //We split the first part of the string with the letter T
+  //$date_time = $time;
+  //list($splitdate, $splittime) = explode('T', $date_time); //We split the first part of the string with the letter T
   
   // Using ASCII 46 we can remove the full stops from the time variable
-  $splittime = str_replace(chr(46), '', $splittime);
+  //$splittime = str_replace(chr(46), '', $splittime);
   
   // Lets now work out the actual bearing. What point of sail are we on?
   
@@ -121,7 +121,7 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
   	
   // Now for each looped row
      
-echo "<tr><td>".$point."</td><td>".$latitude."</td><td>".$longitude."</td><td>".$bearing."</td><td>".$actualspeeddecimal."</td><td>".$splittime."</td><td>".$true_bearing."</td><td>".$pointofsail."</td></tr>";
+echo "<tr><td>".$point."</td><td>".$latitude."</td><td>".$longitude."</td><td>".$bearing."</td><td>".$actualspeeddecimal."</td><td>".$time."</td><td>".$true_bearing."</td><td>".$pointofsail."</td></tr>";
 
 ## WE NEED TO USE THIS SPACE TO ADD UP OUR SPEED AND THEN DEVIDE BY THE TOTAL NUMBER OF ROWS ###################################################################################################################
 
