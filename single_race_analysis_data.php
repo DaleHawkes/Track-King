@@ -55,7 +55,7 @@ echo "Comments: $race_info[9]<br>";
 $average_wind_direction = ($race_info[3] + $race_info[4])/2;
 echo "<br>Average Wind Direction = $average_wind_direction<br><br>";
 
-$sql = "SELECT * FROM race_recording WHERE Time LIKE '$selecteddate%'";
+$sql = "SELECT * FROM race_recording WHERE Date = '$selecteddate'";
 $result = mysql_query($sql)or die(mysql_error());
 ?>
 

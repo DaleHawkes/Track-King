@@ -59,10 +59,10 @@ echo "<br>Average Wind Direction = $average_wind_direction<br>";
 echo "<b>Remember True Bearing Angle is actually our Point of Sail</b><br>";
 
 ## HERE WE START OUR FOR LOOP TO CREATE THE POLAR DIAGRAM #################################################################################################################################################
-for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++) 
+for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
 {
 
-		$sql = "SELECT * FROM race_recording WHERE Time LIKE '$selecteddate%' AND Bearing = '$for_loop_counter' ORDER BY speed ASC";
+		$sql = "SELECT * FROM race_recording WHERE Date = '$selecteddate' AND Bearing = '$for_loop_counter' ORDER BY speed ASC";
 		$result = mysql_query($sql)or die(mysql_error());
 		
 	?>
@@ -132,10 +132,8 @@ $runningtotal += $averagespeed;
 // Modify $runningtotal to two decimal places (This value will get rounded up/down)
   	$runningtotal = number_format($runningtotal, 2, '.', '');
 
-#######################
- 
 	} // End our while loop
-	
+
 	// We print the average speed here so that we only get one vlaue per table/bearing
 	echo "<hr>";
   	echo "<b>Bearing is ".$bearing."</b><br>";
