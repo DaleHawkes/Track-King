@@ -100,13 +100,7 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
  
   // Modify ActualSpeed to two decimal places
   $actualspeeddecimal = number_format($actualspeed, 2, '.', '');
-  
-  //$date_time = $time;
-  //list($splitdate, $splittime) = explode('T', $date_time); //We split the first part of the string with the letter T
-  
-  // Using ASCII 46 we can remove the full stops from the time variable
-  //$splittime = str_replace(chr(46), '', $splittime);
-  
+
   // Lets now work out the actual bearing. What point of sail are we on?
   
   $true_bearing = 360 - ($average_wind_direction - $bearing);

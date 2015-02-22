@@ -60,9 +60,11 @@ $average_wind_direction = ($race_info[3] + $race_info[4])/2;
 ## HERE WE START OUR FOR LOOP TO CREATE THE POLAR DIAGRAM #################################################################################################################################################
 for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
 {
+    $average_wind_direction = ($race_info[3] + $race_info[4])/2;
+    //echo "<br>Average Wind Direction = $average_wind_direction<br><br>";
 
 		//$sql = "SELECT * FROM race_recording, race_information WHERE WindSpeedStart = '8 to 10' AND WindSpeedEnd = '8 to 10' AND Bearing = '$for_loop_counter'";
-        $sql = "SELECT race_information.*, race_recording.* FROM race_information LEFT JOIN race_recording ON race_information.date = race_recording.date WHERE WindSpeedStart = '8 to 10' AND WindSpeedEnd = '8 to 10' AND Bearing = '$for_loop_counter'";
+        $sql = "SELECT race_information.*, race_recording.* FROM race_information LEFT JOIN race_recording ON race_information.date = race_recording.date WHERE WindSpeedStart = '$windspeed' AND WindSpeedEnd = '$windspeed' AND Bearing = '$for_loop_counter'";
         //$sql = "SELECT * FROM race_recording WHERE Time LIKE '%2014-11-23%' AND Bearing = '$for_loop_counter'";
 		$result = mysql_query($sql)or die(mysql_error());
 
@@ -93,89 +95,30 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
   		// Before we close out of PHP, lets define all of our variables so they are easier to remember and work with,
   		// you can skip this though if you just want to directly reference each row.
  
-  $point     = $row['Point'];
-  $latitude  = $row['Latitude'];
-  $longitude = $row['Longitude'];
-  $bearing   = $row['Bearing'];
-  $speed     = $row['Speed'];
-  $date      = $row['Date'];
-  $time      = $row['Time'];
-  $WindSpeedStart     = $row['WindSpeedStart'];
-  $WindSpeedEnd      = $row['WindSpeedEnd'];
+  $point           = $row['Point'];
+  $latitude        = $row['Latitude'];
+  $longitude       = $row['Longitude'];
+  $bearing         = $row['Bearing'];
+  $speed           = $row['Speed'];
+  $date            = $row['Date'];
+  $time            = $row['Time'];
+  $WindSpeedStart  = $row['WindSpeedStart'];
+  $WindSpeedEnd    = $row['WindSpeedEnd'];
   
   $actualspeed = $speed * 1.94384449; //Lets work out our speed in knots
  
   // Modify ActualSpeed to two decimal places
   $actualspeeddecimal = number_format($actualspeed, 2, '.', '');
-  
-  //$date_time = $time;
-  //list($splitdate, $splittime) = explode('T', $date_time); //We split the first part of the string with the letter T
-  
-  // Using ASCII 46 we can remove the full stops from the time variable
-  //$splittime = str_replace(chr(46), '', $splittime);
-  
+
   // Lets now work out the actual bearing. What point of sail are we on?
   
   $true_bearing = 360 - ($average_wind_direction - $bearing);
   
   //$true_bearing = $average_wind_direction - $bearing;
-  
-  // Lets work out what point of sail we are on.
-	switch ($true_bearing) 
-	{
-		//THIS SECTION IS ALL TO DO WITH THE PORT SIDE OF THE COURSE
-		case $true_bearing >=20 && $true_bearing <=40:
-        //print "Reach";
-		$pointofsail = "Beat";
-        break;
-		
-		case $true_bearing >=41 && $true_bearing <=80:
-        //print "Reach";
-		$pointofsail = "Close Reach";
-        break;
-		
-		case $true_bearing >=81 && $true_bearing <=110:
-        //print "Reach";
-		$pointofsail = "Reach";
-        break;
-		
-		case $true_bearing >=111 && $true_bearing <=150:
-        //print "Reach";
-		$pointofsail = "Broad Reach";
-        break;
-		
-		//THIS SECTION IS ALL TO DO WITH THE STARBOARD SIDE OF THE COURSE
-		case $true_bearing >=320 && $true_bearing <=340:
-        //print "Reach";
-		$pointofsail = "Beat";
-        break;
-		
-		case $true_bearing >=280 && $true_bearing <=319:
-        //print "Reach";
-		$pointofsail = "Close Reach";
-        break;
-		
-		case $true_bearing >=250 && $true_bearing <=279:
-        //print "Reach";
-		$pointofsail = "Reach";
-        break;
-		
-		case $true_bearing >=211 && $true_bearing <=249:
-        //print "Reach";
-		$pointofsail = "Broad Reach";
-        break;
- 
-        case $true_bearing >=151 && $true_bearing <=210:
-        //print "Run";
-		$pointofsail = "Run";		
-        break;
- 
-        default:
-        //print "Not Sure";
-		$pointofsail = "Not Sure";
-	}
 
-  
+  //Work out point of sail function
+    include 'Functions/pointofsail.php';
+
   // Now for each looped row
      
 echo "<tr><td>".$point."</td><td>".$latitude."</td><td>".$longitude."</td><td>".$WindSpeedStart."</td><td>".$WindSpeedEnd."</td><td>".$bearing."</td><td>".$actualspeeddecimal."</td><td>".$date."</td><td>".$time."</td><td>".$true_bearing."</td><td>".$pointofsail."</td></tr>";
