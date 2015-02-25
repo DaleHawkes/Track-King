@@ -49,9 +49,7 @@ $race_info = mysql_fetch_array($result_race_information);
 for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
 {
     $average_wind_direction = ($race_info[3] + $race_info[4])/2;
-    //echo "<br>Average Wind Direction = $average_wind_direction<br><br>";
 
-		//$sql = "SELECT * FROM race_recording, race_information WHERE WindSpeedStart = '8 to 10' AND WindSpeedEnd = '8 to 10' AND Bearing = '$for_loop_counter'";
         $sql = "SELECT race_information.*, race_recording.* FROM race_information LEFT JOIN race_recording ON race_information.date = race_recording.date WHERE WindSpeedStart = '$windspeed' AND WindSpeedEnd = '$windspeed' AND Bearing = '$for_loop_counter'";
 
 		$result = mysql_query($sql)or die(mysql_error());
@@ -65,13 +63,13 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
             			<th>Point</th>
             			<th>Latitude</th>
             			<th>Longitude</th>
-                        <th>WindSpeedStart</th>
-            			<th>WindSpeedEnd</th>
+                        <th>Wind Speed<br>At Start</th>
+            			<th>Wind Speed<br>At End</th>
             			<th>Bearing</th>
-            			<th>Speed (Knots)</th>
+            			<th>Speed<br />(Knots)</th>
                         <th>Date</th>
             			<th>Time</th>
-            			<th>True Bearing Angle</th>
+            			<th>Angle of Sail<br />(X degrees off wind)</th>
             			<th>Point of Sail</th>
          			</tr>
       			</thead>
@@ -122,7 +120,7 @@ $runningtotal += $averagespeed;
 
 	// We print the average speed here so that we only get one value per table/bearing
 	echo "<hr>";
-  	echo "<b>Bearing is ".$bearing."</b><br>";
+  	echo "<b>Compass Bearing is ".$bearing."</b><br>";
 	echo "Average Speed = ".$runningtotal." Knots<br>";
 
 	$runningtotal = 0;  // We have to zero runningtotal for the next table to be made

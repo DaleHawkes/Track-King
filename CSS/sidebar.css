@@ -1,0 +1,63 @@
+#navbar 
+{
+	width: 100px;
+	height: 100%;
+	position: fixed;
+	background-color:#369;
+}
+
+.img 
+{
+	border:none;	
+}
+
+#main 
+{
+	padding-left:100px;
+}
+
+ul.navbar 
+{
+	list-style-type:none;
+	padding-left:17px;
+	margin-top:50px;
+}
+
+li.navbar
+{
+	position:relative;
+	border: 2px solid #eee;
+	border-radius: 50%;
+	padding: 10px;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+	margin: 10px 0;
+	-webkit-transition: border 0.2s ease-in;
+	-moz-transition: border 0.2s ease-in;
+	-o-transition: border 0.2s ease-in;
+	transition: border 0.2s ease-in;
+}
+
+.li:hover /*I can make the red hover work if I take off the . but then one of the boxes always stays*/
+{
+	border: 2px solid #fe000a;
+	-webkit-transition: border 0.2s ease-in;
+	-moz-transition: border 0.2s ease-in;
+	-o-transition: border 0.2s ease-in;
+	transition: border 0.2s ease-in;
+}
+
+.activebox 
+{
+	position: absolute;
+	width: 300px;
+	top:0;
+	left:70px;
+	padding:10px;
+	background-color:#369;
+	color:#fff;
+	border-top-right-radius:30px;
+	border-bottom-right-radius:30px;
+}
+

@@ -7,6 +7,18 @@
 <title>Single Race Analysis - Track King</title>
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link href="css/style.css" rel="stylesheet">
+<link href="css/sidebar.css" rel="stylesheet">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+$( "#navbar li" ).hover(function() {
+        $(this).find('.activebox').fadeToggle();
+});
+});
+</script>
+
+<!--<script src="script/script.js"></script>-->
 
 </head>
 
@@ -15,9 +27,11 @@
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 <!-- Site Navigation -->
+<?php include 'Includes/Sidebar.php'; ?>
 <?php include 'Includes/Navigation.php'; ?>
 
 <div class="container"> 
+
 <!-- START OF MAIN CONTENT AREA -->
 
 <!-- Site banner -->       	
