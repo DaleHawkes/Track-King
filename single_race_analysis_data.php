@@ -18,8 +18,6 @@ $( "#navbar li" ).hover(function() {
 });
 </script>
 
-<!--<script src="script/script.js"></script>-->
-
 </head>
 
 <body>
@@ -27,7 +25,7 @@ $( "#navbar li" ).hover(function() {
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 <!-- Site Navigation -->
-<?php include 'Includes/Sidebar.php'; ?>
+<?php //include 'Includes/Sidebar.php'; ?>
 <?php include 'Includes/Navigation.php'; ?>
 
 <div class="container"> 
