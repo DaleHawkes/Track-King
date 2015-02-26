@@ -65,7 +65,7 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
 
 		$result = mysql_query($sql)or die(mysql_error());
 
-	?>
+    ?>
 
 		<div class="table table-responsive">
    			<table class="table table-condensed table-striped">
@@ -86,9 +86,13 @@ for ($for_loop_counter = 0; $for_loop_counter <= 360; $for_loop_counter++)
       			</thead>
       	<tbody>
 
-	<?php 
-  		while($row = mysql_fetch_array($result))
+	<?php
+
+        while($row = mysql_fetch_array($result))
   		{
+
+
+
   		// Before we close out of PHP, lets define all of our variables so they are easier to remember and work with,
   		// you can skip this though if you just want to directly reference each row.
  
@@ -127,16 +131,18 @@ $runningtotal += $averagespeed;
 // Modify $runningtotal to two decimal places (This value will get rounded up/down)
   	$runningtotal = number_format($runningtotal, 2, '.', '');
 
-	} // End our while loop
+	} // End our WHILE loop
 
 	// We print the average speed here so that we only get one value per table/bearing
 	echo "<hr>";
-  	echo "<b>Compass Bearing is ".$bearing."</b><br>";
-	echo "Average Speed = ".$runningtotal." Knots<br>";
+  	echo "<b>Compass Bearing is ".@$bearing."</b><br>";
+	echo "Average Speed = ".@$runningtotal." Knots<br>";
 
 	$runningtotal = 0;  // We have to zero runningtotal for the next table to be made
+    $bearing = 0;
 
-	} // End our while loop
+	} // End our FOR loop
+
 
 ## THIS MARK THE END OF THE FOR LOOP THAT CREATES THE POLAR DIAGRAM TABLE #######################################################################################################################################
 
