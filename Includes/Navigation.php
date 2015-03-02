@@ -33,10 +33,6 @@
                             <li><a href='polar_diagram_data.php?windspeed=14 to 16'>14 to 16 knots</a></li>
                             <li><a href='polar_diagram_data.php?windspeed=16 to 18'>16 to 18 knots</a></li>
                             <li><a href='polar_diagram_data.php?windspeed=18 to 20'>18 to 20 knots</a></li>
-                            <li><a href='polar_diagram_data.php?windspeed=20 to 22'>20 to 22 knots</a></li>
-                            <li><a href='polar_diagram_data.php?windspeed=22 to 24'>22 to 24 knots</a></li>
-                            <li><a href='polar_diagram_data.php?windspeed=24 to 26'>24 to 26 knots</a></li>
-
                         </ul>
                     </li>
             </ul>

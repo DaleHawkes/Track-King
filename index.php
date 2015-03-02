@@ -46,24 +46,22 @@ require_once('connect.php');
 $sql = "SELECT Date FROM race_information WHERE Boat = 'Ultra Violet'";
 $result = mysql_query($sql)or die(mysql_error());
 
-echo "<h4>Ultra Violet Racing Dates</h4>";
-echo "<table border='0'><tr><th style='width: 200px;'>Single Race Analysis</th><th style='width: 200px;'>Single Race Polar Diagram</th></tr>"; 
- 
-  while($row = mysql_fetch_array($result)){
-  // Before we close out of PHP, lets define all of our variables so they are easier to remember and work with,
-  // you can skip this though if you just want to directly reference each row.
- 
+echo "<table border='0'><tr><th style='width: 200px;'>Single Race Analysis</th><th style='width: 200px;'>Single Race Polar Diagram</th></tr>";
+
+  while($row = mysql_fetch_array($result))
+  {
+
   $date = $row['Date'];
-  
+
   $selecteddate = $date;
- 
+
 // Now for each looped row
 
 echo "<td><a href='single_race_analysis_data.php?selecteddate=$selecteddate'>".$date."</a></td>";
 echo "<td><a href='single_race_polar_diagram_data.php?selecteddate=$selecteddate'>".$date."</a></td>";
 echo "</tr>";
 
-} // End our while loop
+    } // End our while loop
 echo "</table>";
 
 mysql_close($dbc);
@@ -71,29 +69,17 @@ mysql_close($dbc);
 ?>
 <h3>Polar Diagrams For Multiple Races</h3> 
 
-0 to 2 Knots
-<br />
-2 to 4 Knots
-<br />
-4 to 6 Knots
-<br />
-6 to 8 Knots
-<br />
-8 to 10 Knots
-<br />
-10 to 12 Knots
-<br />
-12 to 14 Knots
-<br />
-14 to 16 Knots
-<br />
-16 to 18 Knots
-<br />
-18 to 20 Knots
-<br />
-20 to 22 Knots
-<br />
-22 to 24 Knots
+<a href='polar_diagram_data.php?windspeed=0 to 2'>0 to 2 knots</a>
+<a href='polar_diagram_data.php?windspeed=2 to 4'>2 to 4 knots</a>
+<a href='polar_diagram_data.php?windspeed=4 to 6'>4 to 6 knots</a>
+<a href='polar_diagram_data.php?windspeed=6 to 8'>6 to 8 knots</a>
+<a href='polar_diagram_data.php?windspeed=8 to 10'>8 to 10 knots</a>
+<a href='polar_diagram_data.php?windspeed=10 to 12'>10 to 12 knots</a>
+<a href='polar_diagram_data.php?windspeed=12 to 14'>12 to 14 knots</a>
+<a href='polar_diagram_data.php?windspeed=14 to 16'>14 to 16 knots</a>
+<a href='polar_diagram_data.php?windspeed=16 to 18'>16 to 18 knots</a>
+<a href='polar_diagram_data.php?windspeed=18 to 20'>18 to 20 knots</a>
+
 <br />
 <br />
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta et justo sit amet mollis. Morbi congue consequat mauris, in vehicula tortor imperdiet imperdiet. Fusce vel lacinia felis. Vestibulum accumsan fringilla dui sit amet pellentesque. Fusce neque nulla, ullamcorper in accumsan in, fermentum quis nibh. Duis posuere libero eu luctus euismod. Maecenas vehicula erat eu justo sodales, vel dignissim nulla tempor. Duis in nisl hendrerit metus tristique varius vel ac risus. Praesent elementum eros quis dui molestie, fringilla rutrum sapien posuere. Mauris fringilla urna quis urna facilisis vestibulum.
