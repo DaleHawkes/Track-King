@@ -1,12 +1,12 @@
-#navbar 
+#navbar
 {
 	width: 100px;
 	height: 100%;
 	position: fixed;
-	background-color:#369;
+	background-color:#5b84ad;
 }
 
-.img 
+.img
 {
 	border:none;	
 }
@@ -55,7 +55,7 @@ li.navbar
 	top:0;
 	left:70px;
 	padding:10px;
-	background-color:#369;
+	background-color:#5b84ad;
 	color:#fff;
 	border-top-right-radius:30px;
 	border-bottom-right-radius:30px;

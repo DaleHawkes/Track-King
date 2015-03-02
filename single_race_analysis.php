@@ -39,7 +39,6 @@ require_once('connect.php');
 $sql = "SELECT Date FROM race_information WHERE Boat = 'Ultra Violet'";
 $result = mysql_query($sql)or die(mysql_error());
 
-echo "<h4>Ultra Violet Racing Dates</h4>";
 echo "<table border='0'><tr><th style='width: 200px;'>Single Race Analysis</th></tr>"; 
  
   while($row = mysql_fetch_array($result)){

@@ -2,95 +2,117 @@
 /* CSS Document */
 
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
-h1, h2, h3, h4 {
+h1, h2, h3, h4
+{
     font-family: 'Lato', sans-serif;
     font-weight: 300;
 }
-p {
+p
+{
     font-family: 'Lato', sans-serif;
 }
-html {
+html
+{
     background-color: #474747;
 }
-.top {
+.top
+{
     background-color: #474747;
 }
-.top .navbar-brand {
+.top .navbar-brand
+{
     height: 50px;
     line-height: 50px;
     text-align: center;
     padding: 0 10px;
-    background-color: #CCC;
+    background-color: #CCCCCC;
     color: #474747;
     text-decoration: none;
 }
-.top .container {
+.top .container
+{
     padding: 0;
 }
-.banner {
+.banner
+{
     background-color: #373737;
 }
-.banner .container {
+.banner .container
+{
     background-color: #009b9b;
     min-height: 200px;
     padding: 40px 30px 30px 40px;
 }
-.banner .container p {
+.banner .container p
+{
     font-size: 22px;
     padding-left: 5px;
     font-weight: 300;
 }
-.middle {
-    background-color: #CCC;
+.middle
+{
+    background-color: #CCCCCC;
 }
-.middle .container {
-    background-color: #FFF;
+.middle .container
+{
+    background-color: #FFFFFF;
     min-height: 300px;
     padding-bottom: 20px;
 }
-.navbar-nav li a {
-    color: #CCC;
+.navbar-nav li a
+{
+    color: #CCCCCC;
     font-family: 'Lato', sans-serif;
 }
-.navbar-nav li a:hover {
+.navbar-nav li a:hover
+{
     background-color: #373737;
 }
-.bottom {
+.bottom
+{
     background-color: #474747;
 }
-.bottom .container {
+.bottom .container
+{
     background-color: #373737;
     min-height: 150px;
 }
-.bottom .container h3 {
-    color: #999;
+.bottom .container h3
+{
+    color: #999999;
 }
-.bottom .container p {
-    color: #666;
+.bottom .container p
+{
+    color: #666666;
 }
-.navbar-toggle {
+.bottom a:link
+{
+    text-decoration: none;
+}
+.navbar-toggle
+{
     color: #009b9b;
     font-size: 32px;
     margin: 3px;
     padding: 2px 5px;
     line-height: 32px;
 }
-.navbar-toggle:hover {
+.navbar-toggle:hover
+{
     background-color: #373737;
 }
-.navbar-nav {
+.navbar-nav
+{
     margin: 0;
 }
-
-.content p {
+.content p
+{
     line-height: 30px;
     font-size: 16px;
 }
-.to-tutorial {
-    text-align: center;
-}
-
-.back-to-top {
+/* BACK TO TOP CSS */
+.back-to-top
+{
     position: fixed;
     bottom: 2em;
     right: 0px;
@@ -101,7 +123,7 @@ html {
     padding: 1em;
     display: none;
 }
-/* BACK TO TOP CSS */
-.back-to-top:hover {    
+.back-to-top:hover
+{
     background-color: rgba(135, 135, 135, 0.50);
 }

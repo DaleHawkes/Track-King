@@ -69,24 +69,16 @@ mysql_close($dbc);
 ?>
 <h3>Polar Diagrams For Multiple Races</h3> 
 
-<a href='polar_diagram_data.php?windspeed=0 to 2'>0 to 2 knots</a>
-<a href='polar_diagram_data.php?windspeed=2 to 4'>2 to 4 knots</a>
-<a href='polar_diagram_data.php?windspeed=4 to 6'>4 to 6 knots</a>
-<a href='polar_diagram_data.php?windspeed=6 to 8'>6 to 8 knots</a>
-<a href='polar_diagram_data.php?windspeed=8 to 10'>8 to 10 knots</a>
-<a href='polar_diagram_data.php?windspeed=10 to 12'>10 to 12 knots</a>
-<a href='polar_diagram_data.php?windspeed=12 to 14'>12 to 14 knots</a>
-<a href='polar_diagram_data.php?windspeed=14 to 16'>14 to 16 knots</a>
-<a href='polar_diagram_data.php?windspeed=16 to 18'>16 to 18 knots</a>
+<a href='polar_diagram_data.php?windspeed=0 to 2'>0 to 2 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=2 to 4'>2 to 4 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=4 to 6'>4 to 6 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=6 to 8'>6 to 8 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=8 to 10'>8 to 10 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=10 to 12'>10 to 12 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=12 to 14'>12 to 14 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=14 to 16'>14 to 16 knots</a><br />
+<a href='polar_diagram_data.php?windspeed=16 to 18'>16 to 18 knots</a><br />
 <a href='polar_diagram_data.php?windspeed=18 to 20'>18 to 20 knots</a>
-
-<br />
-<br />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta et justo sit amet mollis. Morbi congue consequat mauris, in vehicula tortor imperdiet imperdiet. Fusce vel lacinia felis. Vestibulum accumsan fringilla dui sit amet pellentesque. Fusce neque nulla, ullamcorper in accumsan in, fermentum quis nibh. Duis posuere libero eu luctus euismod. Maecenas vehicula erat eu justo sodales, vel dignissim nulla tempor. Duis in nisl hendrerit metus tristique varius vel ac risus. Praesent elementum eros quis dui molestie, fringilla rutrum sapien posuere. Mauris fringilla urna quis urna facilisis vestibulum.
-<br /><br />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse suscipit a tellus id lacinia. In nec placerat est. Pellentesque commodo quam ornare odio maximus sodales. Quisque lacus urna, malesuada at risus eu, dictum semper nisi. Suspendisse commodo dui tortor, sit amet aliquet dolor aliquam nec. Praesent eget elit vel magna vestibulum bibendum sed ut nulla. Curabitur at venenatis nulla. Curabitur varius augue leo, sed vehicula nulla mollis a. Vestibulum volutpat auctor ipsum, interdum malesuada odio dictum in. Suspendisse sit amet risus at urna fringilla feugiat sit amet id tortor.
-<br /><br />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse suscipit a tellus id lacinia. In nec placerat est. Pellentesque commodo quam ornare odio maximus sodales. Quisque lacus urna, malesuada at risus eu, dictum semper nisi. Suspendisse commodo dui tortor, sit amet aliquet dolor aliquam nec. Praesent eget elit vel magna vestibulum bibendum sed ut nulla. Curabitur at venenatis nulla. Curabitur varius augue leo, sed vehicula nulla mollis a. Vestibulum volutpat auctor ipsum, interdum malesuada odio dictum in. Suspendisse sit amet risus at urna fringilla feugiat sit amet id tortor.
 
 <!-- END OF CONTENT HERE -->
 
