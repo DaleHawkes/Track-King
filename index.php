@@ -67,8 +67,9 @@ echo "</table>";
 mysql_close($dbc);
 
 ?>
-<h3>Polar Diagrams For Multiple Races</h3> 
+<h3>Polar Diagrams For Multiple Races</h3>
 
+<!--
 <a href='polar_diagram_data.php?windspeed=0 to 2'>0 to 2 knots</a><br />
 <a href='polar_diagram_data.php?windspeed=2 to 4'>2 to 4 knots</a><br />
 <a href='polar_diagram_data.php?windspeed=4 to 6'>4 to 6 knots</a><br />
@@ -79,7 +80,15 @@ mysql_close($dbc);
 <a href='polar_diagram_data.php?windspeed=14 to 16'>14 to 16 knots</a><br />
 <a href='polar_diagram_data.php?windspeed=16 to 18'>16 to 18 knots</a><br />
 <a href='polar_diagram_data.php?windspeed=18 to 20'>18 to 20 knots</a>
+-->
+<h3>The Upload Process</h3>
+<ul>
+<li>Open the CSV MyTracks file</li>
+<li>Delete the following columns, Segment, Altitude, Accuracy, Power, Cadence and Heart Rate</li>
+<li>Delete the first 4 rows in the file</li>
+<li>Also delete any rows that have no data in the speed column</li>
 
+</ul>
 <!-- END OF CONTENT HERE -->
 
 <br />
